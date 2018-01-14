@@ -1,0 +1,500 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="baidu_union_verify" content="d1952c66cf48912e21c18c7c581f382a">
+  <meta name="360-site-verification" content="67fbcc5a67f4c65c057315b28fa0b2c8" />
+<meta name="google-site-verification" content="2GzxQ0VtXwTSUdmGm6DzcmhTzM_I9QmzCb_pzpMzD88" />
+  
+    <title>Monad初探 | Neverland</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Liu Tongtong">
+    
+    <meta name="description" itemprop="description" content="坑太深。。。学好数学真重要！！！">
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Neverland" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/neverland.ico">
+    
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            var _bdId ='d1b42de2d8628e947e54629dc9c3d3b1';
+             hm.src = "//hm.baidu.com/hm.js?" + _bdId;
+             var s = document.getElementsByTagName("script")[0]; 
+             s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+     
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Neverland">Neverland</a></h1>
+				<a class="blog-motto">Write the code. Change the world.</a>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+					<li>
+					
+					<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" autocomplete="off" name="q" maxlength="20" placeholder="搜索" />
+					</form>
+					
+					</li>
+				</ul>
+                            </nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/12/22/Monad初探/" title="Monad初探" itemprop="url">Monad初探</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="https://plus.google.com/117570204459436230000?rel=author" title="Liu Tongtong" target="_blank" itemprop="author">Liu Tongtong</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2014-12-22T08:08:00.000Z" itemprop="datePublished">2014-12-22</time>
+    更新日期:<time datetime="2014-12-22T08:17:06.000Z" itemprop="dateModified">2014-12-22</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概念解释"><span class="toc-number">1.</span> <span class="toc-text">概念解释</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#类型系统"><span class="toc-number">1.1.</span> <span class="toc-text">类型系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数与函子"><span class="toc-number">1.2.</span> <span class="toc-text">函数与函子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自函数与自函子"><span class="toc-number">1.3.</span> <span class="toc-text">自函数与自函子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#范畴"><span class="toc-number">1.4.</span> <span class="toc-text">范畴</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函子深入"><span class="toc-number">1.5.</span> <span class="toc-text">函子深入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#半群与幺半群"><span class="toc-number">1.6.</span> <span class="toc-text">半群与幺半群</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Monad"><span class="toc-number">2.</span> <span class="toc-text">Monad</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#自函子范畴"><span class="toc-number">2.1.</span> <span class="toc-text">自函子范畴</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自函子范畴上的幺半群"><span class="toc-number">2.2.</span> <span class="toc-text">自函子范畴上的幺半群</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#封闭性"><span class="toc-number">2.2.1.</span> <span class="toc-text">封闭性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#结合律"><span class="toc-number">2.2.2.</span> <span class="toc-text">结合律</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#幺元"><span class="toc-number">2.2.3.</span> <span class="toc-text">幺元</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Monad有什么用"><span class="toc-number">3.</span> <span class="toc-text">Monad有什么用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#程序示例"><span class="toc-number">4.</span> <span class="toc-text">程序示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number">5.</span> <span class="toc-text">参考资料</span></a></li></ol>
+		</div>
+		
+		<p>我试图从如下的定义里看穿Monad的真相。不知道眼力够不够了😂</p>
+<blockquote>
+<p>A monad in X is just a monoid in the category of endofunctors of X, with product × replaced by composition of endofunctors and unit set by the identity endofunctor.</p>
+<p>Monad是自函子范畴上的幺半群。</p>
+</blockquote>
+<h2 id="概念解释"><a href="#概念解释" class="headerlink" title="概念解释"></a>概念解释</h2><p>首先，对于如下相关的概念我尝试给出我自己的定义。</p>
+<h3 id="类型系统"><a href="#类型系统" class="headerlink" title="类型系统"></a>类型系统</h3><p>Haskell的类型系统相当复杂。不同于OO只是一层抽象，Haskell抽象多得可怕。目前我给出的分层如下：</p>
+<p><img src="/BlogImages/Monad初探/Monad_1.png" alt=""></p>
+<p>从下往上是按照从具体到抽象。首先是具体的值<code>Value</code>，其次是将<code>Value</code>抽象为特定类型<code>Proper Type</code>，然后<code>Proper Type</code>又被抽象为高阶(包含一阶)类型<code>Higher Order Type</code>，最后是最抽象的<code>kind</code>。而<code>Monad</code>是什么呢？它是<code>kind</code>为<code>* -&gt; *</code>的一种类型类。</p>
+<h3 id="函数与函子"><a href="#函数与函子" class="headerlink" title="函数与函子"></a>函数与函子</h3><blockquote>
+<p>此处的函数狭义地仅指Haskell里的方法，即输入参数和输出参数均为<code>Proper Type</code>的一一映射</p>
+</blockquote>
+<p>函数<code>Function</code>是指输入参数和输出参数均为<code>Proper Type</code>的一一映射，而函子<code>Functor</code>是指输入参数和输出参数均为<code>Higher Order Type</code>的一一映射。其中<code>Functor</code>的定义不够准确，在范畴部分会继续补充。</p>
+<h3 id="自函数与自函子"><a href="#自函数与自函子" class="headerlink" title="自函数与自函子"></a>自函数与自函子</h3><p>前面我们已经给出了<code>Function</code>的定义，用代码表示就是<code>Type A -&gt; Type B</code>。如果此处的<code>Type B</code>包含于<code>Type A</code>，那么我们就称此函数为自函数<code>Endofunction</code>。特别的，如果<code>Type B</code>等于<code>Type A</code>，则称其为<code>Identity Function</code>。</p>
+<p>类比自函数，什么是自函子<code>Endofunctor</code>呢？对于<code>Higher Order Type A -&gt; Higher Order Type B</code>，如果<code>Higher Order Type B</code>包含于<code>Higher Order Type A</code>，则我们称此函子为自函子。同样的，如果<code>Higher Order Type B</code>等于<code>Higher Order Type A</code>，则称其为<code>Identity Functor</code>。</p>
+<h3 id="范畴"><a href="#范畴" class="headerlink" title="范畴"></a>范畴</h3><p>我不打算从很严谨的定义阐明范畴<code>Category</code>的概念。通俗地讲，我理解的范畴就是对象+态射。那么在Haskell中什么是范畴呢？</p>
+<p>最重要的我认为是一个<code>Higher Order Type</code>对应于一个<code>Category</code>，其中被该<code>Higher Order Type</code>所抽象的<code>Proper Type</code>就是该<code>Category</code>的对象，而以这些<code>Proper Type</code>为入参和出参的<code>Function</code>就是该<code>Category</code>的态射。</p>
+<h3 id="函子深入"><a href="#函子深入" class="headerlink" title="函子深入"></a>函子深入</h3><p>然后<code>Functor</code>的概念可以进一步深入。刚刚说道，函子<code>Functor</code>是指输入参数和输出参数均为<code>Higher Order Type</code>的一一映射，更准确的，<code>Functor</code>是<code>Higher Order Type</code>所对应的范畴之间的映射，它包括对对象的映射和对态射的映射。举个例子，考虑<code>a -&gt; [a]</code>作为<code>Functor</code>，它是<code>Identity</code>对应的范畴和<code>List</code>对应的范畴之间的映射。第一它可以作为对象之间的映射，例如它是<code>Int -&gt; [Int]</code>之间的映射，第二，作为对态射的映射，由于<code>[]</code>有<code>map</code>方法，所以它还是<code>(Int -&gt; Int) -&gt; [Int] -&gt; [Int]</code>之间的映射。</p>
+<blockquote>
+<p>在Haskell中有类型类<code>Functor</code>，它接受高阶类型作为实例，高阶类型本身就是类型构造器，它就是对象之间的映射。<code>Functor</code>实例必须实现<code>fmap</code>方法，它又是态射之间的映射。</p>
+</blockquote>
+<h3 id="半群与幺半群"><a href="#半群与幺半群" class="headerlink" title="半群与幺半群"></a>半群与幺半群</h3><p>我们知道群是指满足的封闭性、结合律、有幺元、逆元的非空集合+二元运算<code>(G, *)</code>。当<code>(G, *)</code>满足封闭性、结合律时它是一个半群，进一步，如果还有幺元，则它是一个幺半群。</p>
+<h2 id="Monad"><a href="#Monad" class="headerlink" title="Monad"></a>Monad</h2><p>上面说了一大堆，如果不具体到Monad的定义上被觉得都是扯淡。回顾开头部分引用的定义。</p>
+<blockquote>
+<p>Monad是自函子范畴上的幺半群。</p>
+</blockquote>
+<h3 id="自函子范畴"><a href="#自函子范畴" class="headerlink" title="自函子范畴"></a>自函子范畴</h3><p>首先，考虑什么是自函子范畴？上面说过，粗浅地认为范畴=对象+态射。既然是自函子范畴，对象自然是自函子。而实际上如果把Haskell所有类型和方法统一作为一个范畴，则Haskell上所有的函子都是自函子（<strong>这一点还有些模糊</strong>）。用Haskell代码表示这里的自函子就是<code>a -&gt; m b</code>，其中<code>a, b</code>是类型参数，<code>m</code>是高阶类型。</p>
+<p>那么接下来的问题就是自函子范畴上的态射是什么。根据函子范畴的定义，这里的态射叫做自然变换。维基上的解释还比较清晰，用Haskell代码表示从函子<code>a - &gt; m b</code>到<code>a -&gt; m c</code>的自然变换就是<code>m b -&gt; m c</code>。所有这些自然变换就构成了自函子范畴上的态射。</p>
+<h3 id="自函子范畴上的幺半群"><a href="#自函子范畴上的幺半群" class="headerlink" title="自函子范畴上的幺半群"></a>自函子范畴上的幺半群</h3><p>然后作为这个自函子范畴上的幺半群<code>(G, *)</code>，非空集合G自然就是自函子构成的集合，而二元运算<code>*</code>是什么呢？幺元是什么呢？</p>
+<p>回忆Haskell中对Monad实例的要求是实现<code>return</code>函数和<code>&gt;&gt;=</code>函数，它们的定义如下：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="type">Monad</span> (<span class="title">m</span> :: * -&gt; *) <span class="keyword">where</span></span></span><br><span class="line">    (&gt;&gt;=) :: m a -&gt; (a -&gt; m b) -&gt; m b</span><br><span class="line">    return :: a -&gt; m a</span><br></pre></td></tr></table></figure>
+<p>根据函数声明可以看出，<code>return</code>本身就是一个特殊的自函子，而<code>&gt;&gt;=</code>酷似二元运算。我们自然地猜测<code>&gt;&gt;=</code>就是这个幺半群的二元运算，<code>reutrn</code>就是幺元。但是<code>&gt;&gt;=</code>并不完全符合二元运算的定义，所以我们定义新的函数：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;=&gt; :: (a -&gt; m b) -&gt; (b -&gt; m c) -&gt; (a -&gt; m c)</span><br></pre></td></tr></table></figure>
+<p>显然，<code>&gt;=&gt;</code>符合这个幺半群里对二元运算的定义。<code>&gt;&gt;=</code>与<code>&gt;=&gt;</code>的关系为对于任意两个函子<code>f, g</code>，有<code>(f x) &gt;&gt;= g</code>等价于<code>(f &gt;=&gt; g) x</code>。</p>
+<h4 id="封闭性"><a href="#封闭性" class="headerlink" title="封闭性"></a>封闭性</h4><p><del>对于任意两个自函子<code>f: a -&gt; m b</code>以及<code>g: b -&gt; m c</code>，那么<code>&gt;&gt;= g</code>就是一个<code>m b -&gt; m c</code>的自然变换，将<code>f</code>映射为<code>h: a -&gt; m c</code>，而显然<code>h</code>也是一个自函子，所以满足封闭性。用代码表示就是<code>(&gt;&gt;= g) . f = h</code>。</del></p>
+<p>对于任意两个自函子<code>f: a -&gt; m b</code>以及<code>g: b -&gt; m c</code>，那么<code>f &gt;=&gt; g</code>得到<code>h: a -&gt; m c</code>的自然变换，而显然<code>h</code>也是一个自函子，所以满足封闭性。</p>
+<h4 id="结合律"><a href="#结合律" class="headerlink" title="结合律"></a>结合律</h4><p><del>对于任意三个自函子<code>f: a -&gt; m b</code>, <code>g: b -&gt; m c</code>, <code>h: c -&gt; m d</code>，先考虑<code>(f * g) * h</code>的顺序，计算<code>(&gt;&gt;= h) . ((&gt;&gt;= g) . f) = a - &gt; m d</code>。再考虑<code>f * (g * h)</code>的顺序，计算<code>(&gt;&gt;= (&gt;&gt;= h) . g) . f = a - &gt; m d</code>。所以结合律成立。</del></p>
+<p>对于任意三个自函子<code>f: a -&gt; m b</code>, <code>g: b -&gt; m c</code>, <code>h: c -&gt; m d</code>，先考虑<code>(f * g) * h</code>的顺序，计算<code>(f &gt;=&gt; g) &gt;=&gt; h = a - &gt; m d</code>。再考虑<code>f * (g * h)</code>的顺序，计算<code>f &gt;=&gt; (g &gt;=&gt; h) = a - &gt; m d</code>。所以结合律成立。</p>
+<h4 id="幺元"><a href="#幺元" class="headerlink" title="幺元"></a>幺元</h4><p><del>首先验证左结合律。取任意自函子<code>f: a -&gt; m b</code>，考虑<code>return * f</code>，计算<code>(&gt;&gt; f) . return = a -&gt; m b = f</code>。左结合律成立。再验证右结合律，考虑<code>f * return</code>，计算<code>(&gt;&gt;= return) . f = a -&gt; m b = f</code>，右结合律成立。</del></p>
+<p>首先验证左结合律。取任意自函子<code>f: a -&gt; m b</code>，考虑<code>return * f</code>，计算<code>return &gt;=&gt; f = a -&gt; m b = f</code>。左结合律成立。再验证右结合律，考虑<code>f * return</code>，计算<code>f &gt;=&gt; return = a -&gt; m b = f</code>，右结合律成立。</p>
+<p>综上，我们验证了实现了<code>return</code>和<code>&gt;=&gt;</code>(也就是实现了<code>return</code>和<code>&gt;&gt;=</code>)的Monad实例确实是自函子范畴上的幺半群。这里我们暂时不再证明满足自函子范畴上的幺半群一定是Monad的结论。</p>
+<h2 id="Monad有什么用"><a href="#Monad有什么用" class="headerlink" title="Monad有什么用"></a>Monad有什么用</h2><p>费尽千辛万苦终于理解了开头一句话的意思，但现在面临的问题是引入Monad究竟给Haskell带来了什么好处呢？无非是解决非纯函数带来的副作用的问题。</p>
+<p>那么Monad怎么解决副作用问题呢？</p>
+<p>在维基百科的Haskell词条中有如下描述：</p>
+<blockquote>
+<p>它是一门纯函数编程语言，这意味着大体上，Haskell中的函数没有副作用。Haskell用特定的类型来表达副作用，该类型与函数类型相互独立。纯函数可以操作并返回可执行的副作用的类型，但不能够执行它们，只有用于表达副作用的类型才能执行这些副作用，Haskell以此表达其它语言中的非纯函数。</p>
+</blockquote>
+<p>按照我的理解，Haskell对于这些可能有副作用的类型构造了相应的高级类型<code>Higher Order Type</code>，也就是形成了对立于没有副作用的范畴的新范畴。而在这两个范畴之间，通过Monad联系起来。若记无副作用范畴为C1，有副作用范畴为C2。这种联系只有从C1到C2的单向方法以及C2的内部方法，不存在从C2到C1的方法。通过这样的设计来隔离这两个范畴。</p>
+<p>还是最初以导致Monad引入的IO类型作为例子说明。</p>
+<p>这里的自函子为<code>IO</code>函子，它对Monad类型类的实现如下：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">instance</span> <span class="type">Monad</span> <span class="type">IO</span> <span class="keyword">where</span></span></span><br><span class="line">    return x = <span class="type">IO</span> x</span><br><span class="line">    <span class="type">IO</span> x &gt;&gt;= f = f x</span><br></pre></td></tr></table></figure>
+<p>IO是显然的具有副作用的操作。IO类型将这种操作封装为一种类型，<code>return</code>操作提供了从C1到C2的方法，<code>&gt;&gt;=</code>操作提供了C2的内部方法。更准确的说法是道可叨中的说法：<code>return</code>是一种最自然的类型提升，也就是单位函子，<code>&gt;&gt;=</code>是一种首先的类型下降，但是确保了结果还是在IO类型的范畴当中。</p>
+<p>通过Monad的机制，确保了有副作用的范畴中的执行始终停留在有副作用的范畴中，不会影响原来的类型。</p>
+<p>最后我想补充一点，Monad是如何解决执行顺序对于有副作用函数的影响。我的理解是<code>&gt;&gt;=</code>实际上类似于shell中的<code>|</code>，它构造了一种管道，使得函数的执行是有顺序的。但是这与幺半群的结合律是否矛盾呢？并不矛盾。因为例如对于<code>m &gt;&gt;= f &gt;&gt;= g ...</code>中除了第一个参数，后续的部分只是明确了执行的过程，并没有实际的输入执行，必须等到<code>m</code>进入管道后才能真正开始计算结果。所以与结合律并不矛盾。</p>
+<p>引用道可叨的一张图，希望能帮助理解。</p>
+<p><img src="/BlogImages/Monad初探/Monad_2.png" alt=""></p>
+<!--> 原本我觉得上面这一段中提出执行顺序问题，是可以在前面关于隔离两个范畴的讨论中解决掉的，但是并没能太想清楚-->
+<h2 id="程序示例"><a href="#程序示例" class="headerlink" title="程序示例"></a>程序示例</h2><p>有道寒假实践题目是调查自己的家族图谱。如果我们构想了一个数据结构存储了所有收集到的关于一个族谱的信息。从其中某一个人出发，要获得与他相关的任意一个人，可以经过一步或者多步如下的关系获得：父亲(father)，母亲(mother)，丈夫或妻子(husbandOrWife)，长子或长女(eldestChild)，最大的弟弟或妹妹(nextChild)</p>
+<p>于是我构造了如下的例子：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">data</span> <span class="type">Person</span> = <span class="type">Person</span> <span class="type">String</span></span></span><br><span class="line">              <span class="keyword">deriving</span> <span class="type">Show</span></span><br><span class="line"><span class="title">father</span> :: <span class="type">Person</span> -&gt; <span class="type">Maybe</span> <span class="type">Person</span></span><br><span class="line"><span class="title">mother</span> :: <span class="type">Person</span> -&gt; <span class="type">Maybe</span> <span class="type">Person</span></span><br><span class="line"><span class="title">husbandOrWife</span> :: <span class="type">Person</span> -&gt; <span class="type">Maybe</span> <span class="type">Person</span></span><br><span class="line"><span class="title">eldestChild</span> :: <span class="type">Person</span> -&gt; <span class="type">Maybe</span> <span class="type">Person</span></span><br><span class="line"><span class="title">nextChild</span> :: <span class="type">Person</span> -&gt; <span class="type">Maybe</span> <span class="type">Person</span></span><br></pre></td></tr></table></figure>
+<p>这里我们用了Monad类型的<code>Maybe</code>。它给我们带来了什么好处呢？由于不是每一个人都拥有上述五种关系的人，或者由于族谱的缺失，数据不一定完整。所以有可能经过上述某一步操作，没有期望的结果。如果我们采用对函数结果进行判断，则代码会演变成类似<code>If...else...</code>结构冗长的嵌套。<code>Maybe</code>由于实现了Monad类型，通过<code>&gt;&gt;=</code>我们可以正常地寻找某人，中间过程不用加以判断，如果某一步出现找不到，则结果会变为<code>Nothing</code>(不是说他不是东西。。。)。简直太有爱了！</p>
+<p>从范畴角度来看，由于<code>Maybe</code>类型存在例外的<code>Nothing</code>的情况，所以Monad使得涉及<code>Maybe</code>的操作被限制在<code>Maybe</code>对应的范畴内，从而使程序设计变得容易。</p>
+<p>写了这么多，我只想说。。。心好累。。。</p>
+<p><br><br><br><br><br><br><br></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li>我所理解的monad系列0-5 <a href="http://hongjiang.info/understand-monad-0/" target="_blank" rel="noopener">链接</a></li>
+<li>道可叨 <a href="http://zhuoqiang.me/what-is-monad.html" target="_blank" rel="noopener">链接</a></li>
+<li>自然变换 - 维基百科 <a href="http://zh.wikipedia.org/wiki/自然變換" target="_blank" rel="noopener">链接</a></li>
+<li>知乎问题 - 如何解释Haskell中的单子？parker liu的回答 <a href="http://www.zhihu.com/question/22291305" target="_blank" rel="noopener">链接</a></li>
+<li>Haskell/Understanding Monad <a href="http://en.wikibooks.org/wiki/Haskell/Understanding_monads#Monad_Laws" target="_blank" rel="noopener">链接</a></li>
+</ol>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Haskell/">Haskell</a><a href="/tags/Monad/">Monad</a><a href="/tags/范畴论/">范畴论</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Haskell/">Haskell</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://neverland.siyuan12.com/2014/12/22/Monad初探/" data-title="Monad初探 | Neverland" data-tsina="kisstherainforever" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/01/08/第一份作品/" title="第一份作品">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  第一份作品</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/10/29/Python入门篇/"  title="Python入门篇">
+ <strong>NEXT:</strong><br/> 
+ <span>Python入门篇
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概念解释"><span class="toc-number">1.</span> <span class="toc-text">概念解释</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#类型系统"><span class="toc-number">1.1.</span> <span class="toc-text">类型系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数与函子"><span class="toc-number">1.2.</span> <span class="toc-text">函数与函子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自函数与自函子"><span class="toc-number">1.3.</span> <span class="toc-text">自函数与自函子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#范畴"><span class="toc-number">1.4.</span> <span class="toc-text">范畴</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函子深入"><span class="toc-number">1.5.</span> <span class="toc-text">函子深入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#半群与幺半群"><span class="toc-number">1.6.</span> <span class="toc-text">半群与幺半群</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Monad"><span class="toc-number">2.</span> <span class="toc-text">Monad</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#自函子范畴"><span class="toc-number">2.1.</span> <span class="toc-text">自函子范畴</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自函子范畴上的幺半群"><span class="toc-number">2.2.</span> <span class="toc-text">自函子范畴上的幺半群</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#封闭性"><span class="toc-number">2.2.1.</span> <span class="toc-text">封闭性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#结合律"><span class="toc-number">2.2.2.</span> <span class="toc-text">结合律</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#幺元"><span class="toc-number">2.2.3.</span> <span class="toc-text">幺元</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Monad有什么用"><span class="toc-number">3.</span> <span class="toc-text">Monad有什么用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#程序示例"><span class="toc-number">4.</span> <span class="toc-text">程序示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number">5.</span> <span class="toc-text">参考资料</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+<div id="authorInfo">
+	
+		<div class="author-logo"></div>		
+	
+	<div class="social-list" class="clearfix">
+		
+		<a href="http://weibo.com/kisstherainforever" target="_blank" title="weibo"></a>
+		
+		
+		
+		<a href="https://github.com/Liutongtong7" target="_blank" title="github"></a>
+		
+		
+		<a href="https://www.facebook.com/100007748653966" target="_blank" title="facebook"></a>
+		
+		
+	</div>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/Haskell/" title="Haskell">Haskell<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Mac/" title="Mac">Mac<sup>2</sup></a></li>
+		
+			<li><a href="/categories/Python/" title="Python">Python<sup>1</sup></a></li>
+		
+			<li><a href="/categories/密码学/" title="密码学">密码学<sup>1</sup></a></li>
+		
+			<li><a href="/categories/随想/" title="随想">随想<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/Enigma/" style="font-size: 10px;">Enigma</a> <a href="/tags/Haskell/" style="font-size: 10px;">Haskell</a> <a href="/tags/Mac/" style="font-size: 20px;">Mac</a> <a href="/tags/Monad/" style="font-size: 10px;">Monad</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/学习笔记/" style="font-size: 10px;">学习笔记</a> <a href="/tags/密码分析/" style="font-size: 10px;">密码分析</a> <a href="/tags/范畴论/" style="font-size: 10px;">范畴论</a> <a href="/tags/软件工程/" style="font-size: 10px;">软件工程</a> <a href="/tags/随想/" style="font-size: 10px;">随想</a>
+    </div>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+      <li><a href="http://hexo.io" target="_blank" title="Hexo">Hexo</a></li>
+      <li><a href="http://gengbiao.me" target="_blank" title="coney">coney's Blog</a></li>
+      <li><a href="https://air20.com" target="_blank" title="AIR20">AIR20</a></li>
+    </ul>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+    
+            <p class="copyright"> © 2018 
+		
+		<a href="http://neverland.siyuan12.com" target="_blank" title="Liu Tongtong">Liu Tongtong</a>
+		
+            && Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> && Theme by <a href="http://gengbiao.me" target="_blank" title="coney">coney</a>
+            </div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+
+<script>
+    
+        var _bdImg = '4';
+    
+    window._bd_share_config={
+        "common":{
+            "bdSnsKey":{
+
+            },
+            "bdText":"",
+            "bdMini":"2",
+            "bdMiniList":[
+                "qzone",
+                "tsina",
+                "weixin",
+                "renren",
+                "tqq",
+                "tieba",
+                "douban",
+                "sqq",
+                "diandian",
+                "huaban",
+                "youdao",
+                "mail",
+                "ty",
+                "fbook",
+                "twi",
+                "linkedin",
+                "copy",
+                "print"
+            ],
+            "bdPic":"",
+            "bdStyle":"0",
+            "bdSize":"16"
+        },
+        "slide":{
+            "type":"slide",
+            "bdImg":_bdImg,
+            "bdPos":"right",
+            "bdTop":"350"
+        },
+        "image":{
+            "viewList":[
+                "weixin",
+                "qzone",
+                "tsina",
+                "renren",
+                "douban",
+                "tqq"
+            ],
+            "viewText":"分享：",
+            "viewSize":"16"
+        },
+        "selectShare":{
+            "bdContainerClass":null,
+            "bdSelectMiniList":[
+                "weixin",
+                "qzone",
+                "tsina",
+                "renren",
+                "douban",
+                "tqq"
+            ]
+        }
+    };
+    with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+
+
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-74253337-1', 'auto');  
+ga('send', 'pageview');
+</script>
+
+
+  </body>
+</html>
+
