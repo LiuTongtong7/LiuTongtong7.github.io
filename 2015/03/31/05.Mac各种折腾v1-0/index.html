@@ -7,12 +7,12 @@
   <meta name="360-site-verification" content="67fbcc5a67f4c65c057315b28fa0b2c8" />
 <meta name="google-site-verification" content="2GzxQ0VtXwTSUdmGm6DzcmhTzM_I9QmzCb_pzpMzD88" />
   
-    <title>Enigma破解分析 | Neverland</title>
+    <title>Mac | Mac各种折腾v1.0 | Neverland</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="Liu Tongtong">
     
-    <meta name="description" itemprop="description" content="详细分析了对雷杰夫斯基和图灵破解Enigma的工作">
+    <meta name="description" itemprop="description" content="爱折腾，根本停不下来。记录了各种搜索得到&amp;搜索不到的问题&amp;方法。">
     
     
     
@@ -75,15 +75,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/03/09/Enigma破解分析/" title="Enigma破解分析" itemprop="url">Enigma破解分析</a>
+      <a href="/2015/03/31/05.Mac各种折腾v1-0/" title="Mac | Mac各种折腾v1.0" itemprop="url">Mac | Mac各种折腾v1.0</a>
   </h1>
   <p class="article-author">By
     
       <a href="https://plus.google.com/117570204459436230000?rel=author" title="Liu Tongtong" target="_blank" itemprop="author">Liu Tongtong</a>
     </p>
   <p class="article-time">
-    <time datetime="2015-03-08T19:21:45.000Z" itemprop="datePublished">2015-03-09</time>
-    更新日期:<time datetime="2015-03-09T02:31:57.000Z" itemprop="dateModified">2015-03-09</time>
+    <time datetime="2015-03-31T02:03:33.000Z" itemprop="datePublished">2015-03-31</time>
+    更新日期:<time datetime="2018-01-23T16:51:51.000Z" itemprop="dateModified">2018-01-24</time>
     
   </p>
 </header>
@@ -92,53 +92,64 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#雷杰夫斯基的工作"><span class="toc-number">1.</span> <span class="toc-text">雷杰夫斯基的工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图灵的工作"><span class="toc-number">2.</span> <span class="toc-text">图灵的工作</span></a></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#硬件-amp-软件环境"><span class="toc-number">1.</span> <span class="toc-text">硬件 &amp; 软件环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#合并磁盘失败"><span class="toc-number">2.</span> <span class="toc-text">合并磁盘失败</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关闭Dashboard"><span class="toc-number">3.</span> <span class="toc-text">关闭Dashboard</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#制作OS-X系统安装盘"><span class="toc-number">4.</span> <span class="toc-text">制作OS X系统安装盘</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自制Fusion-Drive"><span class="toc-number">5.</span> <span class="toc-text">自制Fusion Drive</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MAC-VPN"><span class="toc-number">6.</span> <span class="toc-text">MAC VPN</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MAC上将Safari书签同步到Chrome"><span class="toc-number">7.</span> <span class="toc-text">MAC上将Safari书签同步到Chrome</span></a></li></ol>
 		</div>
 		
-		<p>Enigma的破译可以分成两个阶段。第一个阶段是由波兰人雷杰夫斯基为首完成的，利用的是临时密钥的重复发送。在德国人去除了这一漏洞之后，第二个阶段是由英国人图灵完成的。下面分别介绍。</p>
-<p><img src="/BlogImages/Enigma破解分析/Enigma.png" alt=""></p>
-<h2 id="雷杰夫斯基的工作"><a href="#雷杰夫斯基的工作" class="headerlink" title="雷杰夫斯基的工作"></a>雷杰夫斯基的工作</h2><p>雷杰夫斯基所利用的是德军在使用Enigma机器时重复发送密钥所带来的一个漏洞。德军当时使用Enigma机器的方式为，首先有一个记录了一个月中每天所使用的密钥的密码本，然后在当天的每次加密前，选取三个字母表示转子的初始方向，例如ZRW，作为本次加密的临时密钥，用密码本上当天的密钥加密两遍临时密钥，例如ZRWZRW（为了防止偶然的发送或接受错误），之后在用临时密钥加密正文。所以每天德军所发送的密文的前六个字母都是用当天的密钥所加密的重复两遍的临时密钥。利用这一点，雷杰夫斯基的方法得以奏效。</p>
-<p>假设临时密钥为ZRW，ZRWZRW用当日密钥加密后为ASDFGH。考虑前后两个Z，它们分别被加密为了A和F，这是由于快转子在两次加密Z之间转动了三次。这样A和F之间作为同一个字母第一次和第四次被加密的结果，就存在对应关系。通过当天收集大量的密文，我们可以找出密文第一个和第四个字母间存在的所有的对应关系。例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">第一个字母:ABCDEFGHIJKLMNOPQRSTUVWXYZ</span><br><span class="line">第四个字母:FQHPLWOGBMVRXUYCZITNJEASDK</span><br></pre></td></tr></table></figure>
-<p>在这个表中，存在若干字母循环圈，例如A-&gt;F-&gt;W-&gt;A。写出所有的字母循环圈：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A→F→W→A                3个字母的循环圈B→Q→Z→K→V→E→L→R→I→B    9个字母的循环圈C→H→G→O→Y→D→P→C        7个字母的循环圈J→M→X→S→T→N→U→J        7个字母的循环圈</span><br></pre></td></tr></table></figure>
-<p>这些循环圈是由当日密钥决定的，但是循环圈的个数、每个循环圈的长度只由转子的情况决定，与连接板的情况无关。下面我们通过论证连接线对对应关系的影响来不严格地证明无关性。</p>
-<p>首先我们不妨假设R和W是相连的。现在考虑去除连接线会造成什么影响。把连接线的影响可以分为两部分：输入和输出。从输入的角度来看，如果连接线对输入的影响不存在了（即输入R的时候不会经过连接线到W，但是输出R的时候会经过连接线到W），可以发现对应关系表是不变的（改变的是每列对应的明文字母）。从输出的角度来看，原本输出R时实际输出的是W，原本输出W时实际输出的是R。需要把第一行中R和W在第二行中对应的字母对调，把第二行中R和W在第一行中对应的字母对调。这对循环圈造成的影响是，交换了R和W在循环圈中的位置。循环圈的个数、每个循环圈的长度不变。同样，我们可以证明加上连接线的效果相同。</p>
-<p>所以，循环圈的个数、每个循环圈的长度可以作为转子状态的一个特征。同样，第2、5个字母和第3、6个字母之间的对应关系同样可以找出来，再确定循环圈的个数、每个循环圈的长度，也可以作为转子状态的特征。如果能够构造一个完备的对照表，我们可以通过这些特征，确定转子的状态。由于这里的分析与连接板状态无关，而转子的状态一共有3!*26^3=105456种，可以采用穷举的关系建立上述的对照表。对照表中的一条记录可以是这样的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">第一和第四字母对应表中有4个循环圈，长度分别为3,9,7,7;</span><br><span class="line">第二和第五字母对应表中有4个循环圈，长度分别为2,3,9,12;</span><br><span class="line">第三和第六字母对应表中有5个循环圈，长度分别为5,5,5,3,8;</span><br></pre></td></tr></table></figure>
-<p>在找出当日密钥中转子的状态之后，还需要确定连接板的情况才能破解密钥。这一部分没有查找相关的资料。在我看来，一种可行的办法是通过增减连接线来交换字母在循环圈中的位置，使得循环圈与实际的循环圈一致。</p>
-<p>雷杰夫斯基的方法的缺陷在于，如果德军不再重复发送密钥，或者增加转子的个数，他的方法便不再可行。</p>
-<h2 id="图灵的工作"><a href="#图灵的工作" class="headerlink" title="图灵的工作"></a>图灵的工作</h2><p>图灵利用的如下几个条件来建立一些明文与密文的对应：</p>
-<ol>
-<li>德军在每天的固定时间会发送固定格式的密文，例如在每天早上六点会发送天气预报。由于固定格式，往往就有确定的单词出现，例如天气预报中会出现天气（德文wetter），这样就可以猜测这样的密文中一定存在特定的明文单词。</li>
-<li>由于Enigma设计中反射器的存在，Enigma加密时一定不会把一个字母映射为字母本身。</li>
+		<h2 id="硬件-amp-软件环境"><a href="#硬件-amp-软件环境" class="headerlink" title="硬件 &amp; 软件环境"></a>硬件 &amp; 软件环境</h2><ul>
+<li>Macbook pro 13-inch, Mid 2012</li>
+<li>OS X 10.10.2</li>
+</ul>
+<h2 id="合并磁盘失败"><a href="#合并磁盘失败" class="headerlink" title="合并磁盘失败"></a>合并磁盘失败</h2><p>合并磁盘失败通常发生在抹去BootCamp上的windows时。不知道大家有没有尝试过抹去windows，虽然BootCamp提供了抹去windows的功能，但是本人抹过几次，从来没有成功把回收的windows硬盘空间合并进Mac硬盘空间。即使windows所占硬盘空间不大，但逼死强迫症OTZ。</p>
+<p>解决办法：重启电脑，按command+s进入命令行启动页面，输入<code>fsck -f</code>，再输入<code>reboot</code>，系统会重启。启动完毕后再利用BootCamp或Disk Utility合并即可。</p>
+<h2 id="关闭Dashboard"><a href="#关闭Dashboard" class="headerlink" title="关闭Dashboard"></a>关闭Dashboard</h2><p>Dashboard真的是挺鸡肋的功能，尤其在Yosemite的通知中心极大强化之后。Dashboard的Widgets也停止更新了。在Terminal中输入如下命令即可关闭Dashboard。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; defaults write com.apple.dashboard mcx-disabled -boolean YES</span><br><span class="line">&gt;&gt; killall Dock</span><br></pre></td></tr></table></figure>
+<h2 id="制作OS-X系统安装盘"><a href="#制作OS-X系统安装盘" class="headerlink" title="制作OS X系统安装盘"></a>制作OS X系统安装盘</h2><ol>
+<li>下载安装文件<code>Install OS X Yosemite.app</code>(位置自选，我放在桌面上)</li>
+<li>将U盘(&gt;=8G)格式化为Mac OS扩展（日志式），选项中选择GUID分区表(名称自拟，我设为DISK)</li>
+<li>输入如下命令：</li>
 </ol>
-<p>根据第一点，可以确定明文单词在密文中的大致位置，然后结合第二点，根据有没有字母映射到本身这一条件差不多可以确定明文的准确位置。下面的工作就是根据一些明文和对应的密文进行破解。</p>
-<p>首先需要在已知明文中找到最小的一个字母循环圈。假设wetter对应的密文为ETJWPX，则这里存在W-&gt;E-&gt;T-&gt;W的循环圈。设在加密wetter前Enigma的状态为S，加密n个字母后为S+n。如果我们取三台机器，状态分别为S、S+1、S+3，将他们的输出与后者的输入依次相连，则S的W-&gt;S+1的E-&gt;S+3的T-&gt;S的W，构成了一条回路。</p>
-<p>进一步，如果不考虑连接板，我们取三台机器，第一台状态记为S，调节第二台为S+1，调节第三台为S+3，按1-2-3-1的顺序输出与输入相连。如果其中不存在回路，则说明转子的状态与密钥不同。如果其中存在回路，则说明转子的状态很可能为密钥中转子的状态，同时这条回路很可能是字母循环圈。然后只需要用连接线把对应的字母对相连即可。例如，找到的字母循环圈为R-&gt;E-&gt;L-&gt;R，则用连接线连接R和W，L和T。至此密钥破解完成。</p>
-<p>以上。</p>
-<hr>
-<p>参考资料：《Enigma的兴亡》</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; sudo ~/Desktop/Install\ OS\ X\ Yosemite.app/Contents/Resources/createinstallmedia --volume /Volumes/DISK --applicationpath ~/Desktop/Install\ OS\ X\ Yosemite.app --nointeraction</span><br></pre></td></tr></table></figure>
+<h2 id="自制Fusion-Drive"><a href="#自制Fusion-Drive" class="headerlink" title="自制Fusion Drive"></a>自制Fusion Drive</h2><p>光驱是MBP101上留之无用，弃之可惜的功能。将光驱功能最大化的办法，就是将光驱改成外接形式，在原来光驱位上加装固态硬盘。然后问题来了，系统怎么搞？常见的办法是将系统安装在固态硬盘上，而把机械硬盘用作数据盘。但是本人系统盘原本就近300G，远超固态硬盘容量。只想用Time Machine拷贝，懒得删文件，所以捣鼓了Fusion Drive，完美解决。过程如下：</p>
+<ol>
+<li>用Time Machine做好系统备份</li>
+<li>用U盘做好系统安装盘</li>
+<li>插上U盘安装盘，按住option开机，进入U盘</li>
+<li>选择磁盘工具，将SSD和HDD都抹为MAC OS扩展（日志式）</li>
+<li>打开终端，输入：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; diskutil list </span><br><span class="line">&gt;&gt; diskutil cs create &quot;Macintosh FD&quot; disk0 disk1(出现Finished CoreStorage operation表示成功)</span><br><span class="line">&gt;&gt; diskutil cs createvolume [LVG的UUID，在上一步的输出中可以看到] jhfs+(j指journal日志式 HFS+是苹果的文件系统，就和前文格式化的Mac OS 扩展日志式一样) &quot;Macintosh FD&quot;(这个名称可以自己起，和前面一样，中间有空格的话两边加双引号) 600g(分区大小)</span><br></pre></td></tr></table></figure>
+<p>制作完成。然后退出终端，从Time Machine恢复或者重新安装即可。</p>
+<p>参考资料：<a href="http://tieba.baidu.com/p/1992600787?pn=1&amp;see_lz=1" target="_blank" rel="noopener"></a></p>
+<h2 id="MAC-VPN"><a href="#MAC-VPN" class="headerlink" title="MAC VPN"></a>MAC VPN</h2><p>Apple死忠，一直坚持用原生App，包括Safari。但是因为插件支持不如Chrome，在使用VPN时没有办法利用插件实现智能代理。而打开全局代理，很多App就没法使用。最好是能在全局使用VPN时也能实现代理。解决办法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VPN-&gt;Advanced-&gt;Proxies-&gt;Automatic Proxy Configuration, Proxy Configuration File URL: http://pac.uku.im/pac.pac</span><br></pre></td></tr></table></figure>
+<p>设置完毕后打开VPN，输入URL<code>http://uku.im/check</code>，如果显示true说明设置成功。</p>
+<p>参考资料：<a href="https://github.com/zhuzhuor/Unblock-Youku/wiki/%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%AE%BE%E7%BD%AE%E7%A4%BA%E4%BE%8B" target="_blank" rel="noopener"></a></p>
+<h2 id="MAC上将Safari书签同步到Chrome"><a href="#MAC上将Safari书签同步到Chrome" class="headerlink" title="MAC上将Safari书签同步到Chrome"></a>MAC上将Safari书签同步到Chrome</h2><p>折腾这件事的原因同上。调试前端不得不用Chrome，于是有了这样的需求。自己折腾的办法如下：</p>
+<ol>
+<li>清空Chrome书签</li>
+<li>书签-&gt;导入书签和设置</li>
+</ol>
+<p>在Windows上直接在Chrome上安装iCloud Bookmarks插件即可。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/Enigma/">Enigma</a><a href="/tags/密码分析/">密码分析</a>
+  <span></span> <a href="/tags/Mac/">Mac</a>
   </div>
 
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/密码学/">密码学</a>
+  <a class="article-category-link" href="/categories/Mac/">Mac</a>
 </div>
 
 
 
 <div class="article-share" id="share">
 
-  <div data-url="http://neverland.siyuan12.com/2015/03/09/Enigma破解分析/" data-title="Enigma破解分析 | Neverland" data-tsina="kisstherainforever" class="share clearfix">
+  <div data-url="http://neverland.siyuan12.com/2015/03/31/05.Mac各种折腾v1-0/" data-title="Mac | Mac各种折腾v1.0 | Neverland" data-tsina="kisstherainforever" class="share clearfix">
   </div>
 
 </div>
@@ -148,18 +159,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2015/03/31/Mac各种折腾v1-0/" title="Mac各种折腾v1.0">
+ <a href="/2018/01/24/06.撒币游戏-一次有趣的博弈论实践/" title="撒币游戏 | 一次有趣的博弈论实践">
   <strong>PREVIOUS:</strong><br/>
   <span>
-  Mac各种折腾v1.0</span>
+  撒币游戏 | 一次有趣的博弈论实践</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2015/02/18/Mac小工具集锦v1-0/"  title="Mac小工具集锦v1.0">
+<a href="/2015/03/09/04.Enigma破解分析/"  title="密码学 | Enigma破解分析">
  <strong>NEXT:</strong><br/> 
- <span>Mac小工具集锦v1.0
+ <span>密码学 | Enigma破解分析
 </span>
 </a>
 </div>
@@ -173,7 +184,7 @@
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#雷杰夫斯基的工作"><span class="toc-number">1.</span> <span class="toc-text">雷杰夫斯基的工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图灵的工作"><span class="toc-number">2.</span> <span class="toc-text">图灵的工作</span></a></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#硬件-amp-软件环境"><span class="toc-number">1.</span> <span class="toc-text">硬件 &amp; 软件环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#合并磁盘失败"><span class="toc-number">2.</span> <span class="toc-text">合并磁盘失败</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关闭Dashboard"><span class="toc-number">3.</span> <span class="toc-text">关闭Dashboard</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#制作OS-X系统安装盘"><span class="toc-number">4.</span> <span class="toc-text">制作OS X系统安装盘</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自制Fusion-Drive"><span class="toc-number">5.</span> <span class="toc-text">自制Fusion Drive</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MAC-VPN"><span class="toc-number">6.</span> <span class="toc-text">MAC VPN</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MAC上将Safari书签同步到Chrome"><span class="toc-number">7.</span> <span class="toc-text">MAC上将Safari书签同步到Chrome</span></a></li></ol>
   </div>
 
 <div id="asidepart">
@@ -215,7 +226,9 @@
 		
 			<li><a href="/categories/密码学/" title="密码学">密码学<sup>1</sup></a></li>
 		
-			<li><a href="/categories/随想/" title="随想">随想<sup>1</sup></a></li>
+			<li><a href="/categories/经济学/" title="经济学">经济学<sup>1</sup></a></li>
+		
+			<li><a href="/categories/随想/" title="随想">随想<sup>0</sup></a></li>
 		
 		</ul>
 </div>
@@ -225,7 +238,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/Enigma/" style="font-size: 10px;">Enigma</a> <a href="/tags/Haskell/" style="font-size: 10px;">Haskell</a> <a href="/tags/Mac/" style="font-size: 20px;">Mac</a> <a href="/tags/Monad/" style="font-size: 10px;">Monad</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/学习笔记/" style="font-size: 10px;">学习笔记</a> <a href="/tags/密码分析/" style="font-size: 10px;">密码分析</a> <a href="/tags/范畴论/" style="font-size: 10px;">范畴论</a> <a href="/tags/软件工程/" style="font-size: 10px;">软件工程</a> <a href="/tags/随想/" style="font-size: 10px;">随想</a>
+       <a href="/tags/Enigma/" style="font-size: 10px;">Enigma</a> <a href="/tags/Haskell/" style="font-size: 10px;">Haskell</a> <a href="/tags/Mac/" style="font-size: 20px;">Mac</a> <a href="/tags/Monad/" style="font-size: 10px;">Monad</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/博弈论/" style="font-size: 10px;">博弈论</a> <a href="/tags/密码分析/" style="font-size: 10px;">密码分析</a> <a href="/tags/范畴论/" style="font-size: 10px;">范畴论</a>
     </div>
   </div>
 
