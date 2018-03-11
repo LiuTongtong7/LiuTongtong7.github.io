@@ -52,9 +52,9 @@
       <category term="Azure" scheme="http://sevenspace.siyuan12.com/categories/Azure/"/>
     
     
-      <category term="Azure" scheme="http://sevenspace.siyuan12.com/tags/Azure/"/>
-    
       <category term="Python" scheme="http://sevenspace.siyuan12.com/tags/Python/"/>
+    
+      <category term="Azure" scheme="http://sevenspace.siyuan12.com/tags/Azure/"/>
     
   </entry>
   
@@ -94,9 +94,9 @@
       <category term="密码学" scheme="http://sevenspace.siyuan12.com/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
     
     
-      <category term="Enigma" scheme="http://sevenspace.siyuan12.com/tags/Enigma/"/>
-    
       <category term="密码学" scheme="http://sevenspace.siyuan12.com/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
+    
+      <category term="Enigma" scheme="http://sevenspace.siyuan12.com/tags/Enigma/"/>
     
   </entry>
   
