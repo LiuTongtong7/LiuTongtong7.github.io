@@ -248,7 +248,7 @@
 
     
         <meta property="article:published_time" content="Mon Mar 09 2015 03:21:45 GMT+0800">
-        <meta property="article:modified_time" content="Sat Feb 03 2018 18:33:05 GMT+0800">
+        <meta property="article:modified_time" content="Sun Mar 11 2018 23:00:20 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -271,7 +271,7 @@
     "mainEntityOfPage": "http://sevenspace.siyuan12.com/2015/03/09/04.密码学 | Enigma破解分析/index.html",
     "headline": "密码学 | Enigma破解分析",
     "datePublished": "Mon Mar 09 2015 03:21:45 GMT+0800",
-    "dateModified": "Sat Feb 03 2018 18:33:05 GMT+0800",
+    "dateModified": "Sun Mar 11 2018 23:00:20 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Ricardo Liu",
@@ -279,7 +279,7 @@
             "@type": "ImageObject",
             "url": "/img/myavatar.png"
         },
-        "description": "Write the code. Change the world.,这是曾经的理想,现在在斜杠青年的路上一往无前"
+        "description": "<span style='line-height: 1.3em;'>Write the code. Change the world.</span>,<span style='line-height: 1.3em;'>这是曾经的理想</span>,<span style='line-height: 1.3em;'>现在在斜杠青年的路上一往无前</span>"
     },
     "publisher": {
         "@type": "Organization",
@@ -534,7 +534,11 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p>Enigma的破译可以分成两个阶段。第一个阶段是由波兰人雷杰夫斯基为首完成的，利用的是临时密钥的重复发送。在德国人去除了这一漏洞之后，第二个阶段是由英国人图灵完成的。下面分别介绍。</p>
+        <blockquote>
+<p><strong>摘要</strong>：详细分析了对雷杰夫斯基和图灵破解Enigma的工作。</p>
+</blockquote>
+<a id="more"></a>
+<p>Enigma的破译可以分成两个阶段。第一个阶段是由波兰人雷杰夫斯基为首完成的，利用的是临时密钥的重复发送。在德国人去除了这一漏洞之后，第二个阶段是由英国人图灵完成的。下面分别介绍。</p>
 <p><img src="/BlogImages/Enigma破解分析/Enigma.png" alt=""></p>
 <h2 id="雷杰夫斯基的工作"><a href="#雷杰夫斯基的工作" class="headerlink" title="雷杰夫斯基的工作"></a>雷杰夫斯基的工作</h2><p>雷杰夫斯基所利用的是德军在使用Enigma机器时重复发送密钥所带来的一个漏洞。德军当时使用Enigma机器的方式为，首先有一个记录了一个月中每天所使用的密钥的密码本，然后在当天的每次加密前，选取三个字母表示转子的初始方向，例如ZRW，作为本次加密的临时密钥，用密码本上当天的密钥加密两遍临时密钥，例如ZRWZRW（为了防止偶然的发送或接受错误），之后在用临时密钥加密正文。所以每天德军所发送的密文的前六个字母都是用当天的密钥所加密的重复两遍的临时密钥。利用这一点，雷杰夫斯基的方法得以奏效。</p>
 <p>假设临时密钥为ZRW，ZRWZRW用当日密钥加密后为ASDFGH。考虑前后两个Z，它们分别被加密为了A和F，这是由于快转子在两次加密Z之间转动了三次。这样A和F之间作为同一个字母第一次和第四次被加密的结果，就存在对应关系。通过当天收集大量的密文，我们可以找出密文第一个和第四个字母间存在的所有的对应关系。例如：</p>
@@ -705,7 +709,7 @@ J→M→X→S→T→N→U→J        7个字母的循环圈
 <aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
     <div id="sidebar-main">
         <!-- Sidebar Header -->
-        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+        <div class="sidebar-header header-cover" style="background-image: url(/img/mysidebar_header.png);">
     <!-- Top bar -->
     <div class="top-bar"></div>
 
@@ -738,7 +742,7 @@ J→M→X→S→T→N→U→J        7个字母的循环圈
         <ul id="settings-dropdown" class="dropdown-menu">
             
                 <li>
-                    <a href="#" target="_blank" title="Email Me">
+                    <a href="mailto: liutongtong7@gmail.com" target="_blank" title="Email Me">
                         
                             <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
                         
@@ -782,11 +786,46 @@ J→M→X→S→T→N→U→J        7个字母的循环圈
 
     <!-- Categories  -->
     
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/Haskell/">Haskell<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Mac/">Mac<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/Python/">Python<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/密码学/">密码学<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/经济学/">经济学<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
 
     <!-- Pages  -->
     
+        <li>
+            <a href="/about" title="关于">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
 
     <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">6</span>
+            </a>
+        </li>
+        
     
 </ul>
 
@@ -804,31 +843,43 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Sidebar Divider -->
 
-    <div class="sidebar-divider"></div>
-
 
 <!-- Theme Material -->
-
-    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
-        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
-            主题 - Material
-            <span class="sidebar-badge badge-circle">i</span>
-        </div>
-    </a>
 
 
 <!-- Help & Support -->
 <!--
+
+    <a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+        sidebar.help
+        <span class="mdl-button__ripple-container">
+          <span class="mdl-ripple"></span>
+        </span>
+      </div>
+    </a>
 
 -->
 
 <!-- Feedback -->
 <!--
 
+    <a href="https://github.com/viosey/hexo-theme-material/issues" target="_blank" class="sidebar-footer-text-a">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+        sidebar.feedback
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+    </a>
+
 -->
 
 <!-- About Theme -->
 <!--
+
+    <a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+             sidebar.about_theme
+            <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+    </a>
 
 -->
 
@@ -921,6 +972,11 @@ It will not impact the appearance and can give developers a lot of support :)
         <!--Copyright-->
         <div id="copyright">
             Copyright&nbsp;©&nbsp;2014&nbsp;-<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>Seven Space
+            
+                <br>
+                
+                    TT的私人领地
+                
             
         </div>
 
