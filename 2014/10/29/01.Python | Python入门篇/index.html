@@ -54,7 +54,7 @@
 
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" itemprop="description" content="本篇为Python学习笔记入门篇，适用于有一定C/C++基础的Python初学者。主要介绍Python语言的一些特性，语法方面主要记录了与C/C++有差异的地方">
-    <meta name="keywords" content="Coding, Apple, Photograph, Anything Interesting,Python">
+    <meta name="keywords" content="编程, 摄影, 一切有趣的事情, Coding, Photography, Anything Interesting,Python">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -80,6 +80,11 @@
         <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
         <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
+        
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/github-v2.min.css?AfzKxt++K+/lhZBlSjnxwg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
         
 
     
@@ -227,7 +232,7 @@
     <link rel="apple-touch-icon" href="/img/myfavicon.png">
 
     <!-- Site Verification -->
-    
+    <meta name="google-site-verification" content="pWGHf9daAxI3DLlQHJ9Y855-02IantVEKveJ9dOyvIk" />
     
 
     <!-- RSS -->
@@ -288,7 +293,7 @@
             "url": "/img/myfavicon.png"
         }
     },
-    "keywords": ",PythonCoding, Apple, Photograph, Anything Interesting",
+    "keywords": ",Python编程, 摄影, 一切有趣的事情, Coding, Photography, Anything Interesting",
     "description": "本篇为Python学习笔记入门篇，适用于有一定C/C++基础的Python初学者。主要介绍Python语言的一些特性，语法方面主要记录了与C/C++有差异的地方",
 }
 </script>
@@ -370,23 +375,15 @@
         <div class="header-item header-sns_list">
     <!-- Twitter -->
     
-        <a href="https://twitter.com/twitter" target="_blank">
-            <i class="fa fa-twitter fa-lg" aria-hidden="true"></i>
-        </a>
-    
 
     <!-- Facebook -->
     
-        <a href="https://www.facebook.com/facebook" target="_blank">
+        <a href="https://www.facebook.com/100007748653966" target="_blank">
             <i class="fa fa-facebook fa-lg" aria-hidden="true"></i>
         </a>
     
 
     <!-- Google + -->
-    
-        <a href="https://www.google.com/" target="_blank">
-            <i class="fa fa-google-plus fa-lg" aria-hidden="true"></i>
-        </a>
     
 
     <!-- Weibo -->
@@ -394,14 +391,26 @@
 
     <!-- Instagram -->
     
+        <a href="https://www.instagram.com/ricardo.liutt" target="_blank">
+            <i class="fa fa-instagram fa-lg" aria-hidden="true"></i>
+        </a>
+    
 
     <!-- Tumblr -->
     
 
     <!-- Github -->
     
+        <a href="https://github.com/LiuTongtong7" target="_blank">
+            <i class="fa fa-github fa-lg" aria-hidden="true"></i>
+        </a>
+    
 
     <!-- LinkedIn -->
+    
+        <a href="https://www.linkedin.com/in/tongtong-liu-7ba101b8" target="_blank">
+            <i class="fa fa-linkedin fa-lg" aria-hidden="true"></i>
+        </a>
     
 
     <!-- Telegram -->
@@ -546,23 +555,32 @@
 <ul>
 <li>if语句</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if a == b:</span><br><span class="line">	print &quot;a == b&quot;</span><br><span class="line">elif a &gt; b:</span><br><span class="line">	print &quot;a &gt; b&quot;</span><br><span class="line">else:</span><br><span class="line">	print &quot;a &lt; b&quot;</span><br></pre></td></tr></table></figure>
-<ul>
+<pre><code>if a == b:
+    print &quot;a == b&quot;
+elif a &gt; b:
+    print &quot;a &gt; b&quot;
+else:
+    print &quot;a &lt; b&quot;
+</code></pre><ul>
 <li>while语句</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">while true:</span><br><span class="line">	print &quot;Hello&quot;</span><br></pre></td></tr></table></figure>
-<ul>
+<pre><code>while true:
+    print &quot;Hello&quot;
+</code></pre><ul>
 <li>for语句</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">for i in range(10):</span><br><span class="line">	print &quot;Hello&quot;</span><br></pre></td></tr></table></figure>
-<ul>
+<pre><code>for i in range(10):
+    print &quot;Hello&quot;
+</code></pre><ul>
 <li>break与continue语句</li>
 </ul>
 <h2 id="四、函数"><a href="#四、函数" class="headerlink" title="四、函数"></a>四、函数</h2><h3 id="1-函数基础"><a href="#1-函数基础" class="headerlink" title="1. 函数基础"></a>1. 函数基础</h3><p>函数定义：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def sum(a, b):</span><br><span class="line">	return a + b</span><br></pre></td></tr></table></figure>
-<p>函数调用：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">r = sum(1, 2)</span><br><span class="line">print r</span><br></pre></td></tr></table></figure>
-<blockquote>
+<pre><code>def sum(a, b):
+    return a + b
+</code></pre><p>函数调用：</p>
+<pre><code>r = sum(1, 2)
+print r
+</code></pre><blockquote>
 <p>特殊的参数传递方式：</p>
 <ul>
 <li>可以根据参数名进行参数传递</li>
@@ -583,8 +601,13 @@
 <li>函数体内用global可声明全局变量</li>
 </ol>
 <h3 id="4-包机制"><a href="#4-包机制" class="headerlink" title="4. 包机制"></a>4. 包机制</h3><p><code>from mymodule import function</code></p>
-<h2 id="五、类"><a href="#五、类" class="headerlink" title="五、类"></a>五、类</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class rectangle:</span><br><span class="line">	def __init__(self, x, y):</span><br><span class="line">		self.x = x</span><br><span class="line">		self.y = y</span><br><span class="line">	def area(self):</span><br><span class="line">		return x * y</span><br></pre></td></tr></table></figure>
-<h3 id="1-属性"><a href="#1-属性" class="headerlink" title="1. 属性"></a>1. 属性</h3><ul>
+<h2 id="五、类"><a href="#五、类" class="headerlink" title="五、类"></a>五、类</h2><pre><code>class rectangle:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+    def area(self):
+        return x * y
+</code></pre><h3 id="1-属性"><a href="#1-属性" class="headerlink" title="1. 属性"></a>1. 属性</h3><ul>
 <li>私有属性：__attr</li>
 </ul>
 <h3 id="2-方法"><a href="#2-方法" class="headerlink" title="2. 方法"></a>2. 方法</h3><ul>
@@ -598,8 +621,9 @@
 </ul>
 </li>
 </ul>
-<h3 id="3-继承"><a href="#3-继承" class="headerlink" title="3. 继承"></a>3. 继承</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">class rectanglee(shape):</span><br><span class="line">	...</span><br></pre></td></tr></table></figure>
-<h2 id="六、文件读写"><a href="#六、文件读写" class="headerlink" title="六、文件读写"></a>六、文件读写</h2><ol>
+<h3 id="3-继承"><a href="#3-继承" class="headerlink" title="3. 继承"></a>3. 继承</h3><pre><code>class rectanglee(shape):
+    ...
+</code></pre><h2 id="六、文件读写"><a href="#六、文件读写" class="headerlink" title="六、文件读写"></a>六、文件读写</h2><ol>
 <li>f=file/open(path, “w”/“r”/“a”)</li>
 <li>f.close()</li>
 <li>f.read()/readline()/readlines()</li>
@@ -621,6 +645,32 @@
                 <!-- Post Comments -->
                 
                     
+    <!-- 使用 gitcoment -->
+<div id="gitment-comment">
+    <!-- Gitment 评论框 -->
+<div id="container"></div>
+</div>
+<style>
+    #gitment-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+        //id: '页面 ID', // 可选。默认为 location.href
+        owner: 'LiuTongtong7',
+        repo: 'LiuTongtong7.github.io',
+        oauth: {
+            client_id: 'a572f3ba5e0043836a45',
+            client_secret: '28480d50e0ce9524360ca9ae1529c551c5f7f836',
+        },
+    })
+    gitment.render('container')
+</script>
+
                 
             </div>
 
@@ -705,6 +755,8 @@
 
 
 
+   <!-- Gitment -->
+
 
 
 
@@ -720,6 +772,12 @@
 
 <!-- Import prettify js  -->
 
+    
+        
+            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
+        
+    
+
 
 
 <!-- Window Load -->
@@ -730,6 +788,13 @@
         $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
     });
 
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
     
     
 </script>

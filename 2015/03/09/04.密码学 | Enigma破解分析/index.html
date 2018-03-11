@@ -54,7 +54,7 @@
 
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" itemprop="description" content="详细分析了对雷杰夫斯基和图灵破解Enigma的工作">
-    <meta name="keywords" content="Coding, Apple, Photograph, Anything Interesting,密码学,Enigma">
+    <meta name="keywords" content="编程, 摄影, 一切有趣的事情, Coding, Photography, Anything Interesting,密码学,Enigma">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -80,6 +80,11 @@
         <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
         <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
+        
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/github-v2.min.css?AfzKxt++K+/lhZBlSjnxwg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
         
 
     
@@ -227,7 +232,7 @@
     <link rel="apple-touch-icon" href="/img/myfavicon.png">
 
     <!-- Site Verification -->
-    
+    <meta name="google-site-verification" content="pWGHf9daAxI3DLlQHJ9Y855-02IantVEKveJ9dOyvIk" />
     
 
     <!-- RSS -->
@@ -288,7 +293,7 @@
             "url": "/img/myfavicon.png"
         }
     },
-    "keywords": ",密码学,EnigmaCoding, Apple, Photograph, Anything Interesting",
+    "keywords": ",密码学,Enigma编程, 摄影, 一切有趣的事情, Coding, Photography, Anything Interesting",
     "description": "详细分析了对雷杰夫斯基和图灵破解Enigma的工作",
 }
 </script>
@@ -370,23 +375,15 @@
         <div class="header-item header-sns_list">
     <!-- Twitter -->
     
-        <a href="https://twitter.com/twitter" target="_blank">
-            <i class="fa fa-twitter fa-lg" aria-hidden="true"></i>
-        </a>
-    
 
     <!-- Facebook -->
     
-        <a href="https://www.facebook.com/facebook" target="_blank">
+        <a href="https://www.facebook.com/100007748653966" target="_blank">
             <i class="fa fa-facebook fa-lg" aria-hidden="true"></i>
         </a>
     
 
     <!-- Google + -->
-    
-        <a href="https://www.google.com/" target="_blank">
-            <i class="fa fa-google-plus fa-lg" aria-hidden="true"></i>
-        </a>
     
 
     <!-- Weibo -->
@@ -394,14 +391,26 @@
 
     <!-- Instagram -->
     
+        <a href="https://www.instagram.com/ricardo.liutt" target="_blank">
+            <i class="fa fa-instagram fa-lg" aria-hidden="true"></i>
+        </a>
+    
 
     <!-- Tumblr -->
     
 
     <!-- Github -->
     
+        <a href="https://github.com/LiuTongtong7" target="_blank">
+            <i class="fa fa-github fa-lg" aria-hidden="true"></i>
+        </a>
+    
 
     <!-- LinkedIn -->
+    
+        <a href="https://www.linkedin.com/in/tongtong-liu-7ba101b8" target="_blank">
+            <i class="fa fa-linkedin fa-lg" aria-hidden="true"></i>
+        </a>
     
 
     <!-- Telegram -->
@@ -471,14 +480,20 @@
 <p><img src="/BlogImages/Enigma破解分析/Enigma.png" alt=""></p>
 <h2 id="雷杰夫斯基的工作"><a href="#雷杰夫斯基的工作" class="headerlink" title="雷杰夫斯基的工作"></a>雷杰夫斯基的工作</h2><p>雷杰夫斯基所利用的是德军在使用Enigma机器时重复发送密钥所带来的一个漏洞。德军当时使用Enigma机器的方式为，首先有一个记录了一个月中每天所使用的密钥的密码本，然后在当天的每次加密前，选取三个字母表示转子的初始方向，例如ZRW，作为本次加密的临时密钥，用密码本上当天的密钥加密两遍临时密钥，例如ZRWZRW（为了防止偶然的发送或接受错误），之后在用临时密钥加密正文。所以每天德军所发送的密文的前六个字母都是用当天的密钥所加密的重复两遍的临时密钥。利用这一点，雷杰夫斯基的方法得以奏效。</p>
 <p>假设临时密钥为ZRW，ZRWZRW用当日密钥加密后为ASDFGH。考虑前后两个Z，它们分别被加密为了A和F，这是由于快转子在两次加密Z之间转动了三次。这样A和F之间作为同一个字母第一次和第四次被加密的结果，就存在对应关系。通过当天收集大量的密文，我们可以找出密文第一个和第四个字母间存在的所有的对应关系。例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">第一个字母:ABCDEFGHIJKLMNOPQRSTUVWXYZ</span><br><span class="line">第四个字母:FQHPLWOGBMVRXUYCZITNJEASDK</span><br></pre></td></tr></table></figure>
-<p>在这个表中，存在若干字母循环圈，例如A-&gt;F-&gt;W-&gt;A。写出所有的字母循环圈：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A→F→W→A                3个字母的循环圈B→Q→Z→K→V→E→L→R→I→B    9个字母的循环圈C→H→G→O→Y→D→P→C        7个字母的循环圈J→M→X→S→T→N→U→J        7个字母的循环圈</span><br></pre></td></tr></table></figure>
-<p>这些循环圈是由当日密钥决定的，但是循环圈的个数、每个循环圈的长度只由转子的情况决定，与连接板的情况无关。下面我们通过论证连接线对对应关系的影响来不严格地证明无关性。</p>
+<pre><code>第一个字母:ABCDEFGHIJKLMNOPQRSTUVWXYZ
+第四个字母:FQHPLWOGBMVRXUYCZITNJEASDK
+</code></pre><p>在这个表中，存在若干字母循环圈，例如A-&gt;F-&gt;W-&gt;A。写出所有的字母循环圈：</p>
+<pre><code>A→F→W→A                3个字母的循环圈
+B→Q→Z→K→V→E→L→R→I→B    9个字母的循环圈
+C→H→G→O→Y→D→P→C        7个字母的循环圈
+J→M→X→S→T→N→U→J        7个字母的循环圈
+</code></pre><p>这些循环圈是由当日密钥决定的，但是循环圈的个数、每个循环圈的长度只由转子的情况决定，与连接板的情况无关。下面我们通过论证连接线对对应关系的影响来不严格地证明无关性。</p>
 <p>首先我们不妨假设R和W是相连的。现在考虑去除连接线会造成什么影响。把连接线的影响可以分为两部分：输入和输出。从输入的角度来看，如果连接线对输入的影响不存在了（即输入R的时候不会经过连接线到W，但是输出R的时候会经过连接线到W），可以发现对应关系表是不变的（改变的是每列对应的明文字母）。从输出的角度来看，原本输出R时实际输出的是W，原本输出W时实际输出的是R。需要把第一行中R和W在第二行中对应的字母对调，把第二行中R和W在第一行中对应的字母对调。这对循环圈造成的影响是，交换了R和W在循环圈中的位置。循环圈的个数、每个循环圈的长度不变。同样，我们可以证明加上连接线的效果相同。</p>
 <p>所以，循环圈的个数、每个循环圈的长度可以作为转子状态的一个特征。同样，第2、5个字母和第3、6个字母之间的对应关系同样可以找出来，再确定循环圈的个数、每个循环圈的长度，也可以作为转子状态的特征。如果能够构造一个完备的对照表，我们可以通过这些特征，确定转子的状态。由于这里的分析与连接板状态无关，而转子的状态一共有3!*26^3=105456种，可以采用穷举的关系建立上述的对照表。对照表中的一条记录可以是这样的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">第一和第四字母对应表中有4个循环圈，长度分别为3,9,7,7;</span><br><span class="line">第二和第五字母对应表中有4个循环圈，长度分别为2,3,9,12;</span><br><span class="line">第三和第六字母对应表中有5个循环圈，长度分别为5,5,5,3,8;</span><br></pre></td></tr></table></figure>
-<p>在找出当日密钥中转子的状态之后，还需要确定连接板的情况才能破解密钥。这一部分没有查找相关的资料。在我看来，一种可行的办法是通过增减连接线来交换字母在循环圈中的位置，使得循环圈与实际的循环圈一致。</p>
+<pre><code>第一和第四字母对应表中有4个循环圈，长度分别为3,9,7,7;
+第二和第五字母对应表中有4个循环圈，长度分别为2,3,9,12;
+第三和第六字母对应表中有5个循环圈，长度分别为5,5,5,3,8;
+</code></pre><p>在找出当日密钥中转子的状态之后，还需要确定连接板的情况才能破解密钥。这一部分没有查找相关的资料。在我看来，一种可行的办法是通过增减连接线来交换字母在循环圈中的位置，使得循环圈与实际的循环圈一致。</p>
 <p>雷杰夫斯基的方法的缺陷在于，如果德军不再重复发送密钥，或者增加转子的个数，他的方法便不再可行。</p>
 <h2 id="图灵的工作"><a href="#图灵的工作" class="headerlink" title="图灵的工作"></a>图灵的工作</h2><p>图灵利用的如下几个条件来建立一些明文与密文的对应：</p>
 <ol>
@@ -506,6 +521,32 @@
                 <!-- Post Comments -->
                 
                     
+    <!-- 使用 gitcoment -->
+<div id="gitment-comment">
+    <!-- Gitment 评论框 -->
+<div id="container"></div>
+</div>
+<style>
+    #gitment-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+        //id: '页面 ID', // 可选。默认为 location.href
+        owner: 'LiuTongtong7',
+        repo: 'LiuTongtong7.github.io',
+        oauth: {
+            client_id: 'a572f3ba5e0043836a45',
+            client_secret: '28480d50e0ce9524360ca9ae1529c551c5f7f836',
+        },
+    })
+    gitment.render('container')
+</script>
+
                 
             </div>
 
@@ -598,6 +639,8 @@
 
 
 
+   <!-- Gitment -->
+
 
 
 
@@ -613,6 +656,12 @@
 
 <!-- Import prettify js  -->
 
+    
+        
+            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
+        
+    
+
 
 
 <!-- Window Load -->
@@ -623,6 +672,13 @@
         $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
     });
 
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
     
     
 </script>
