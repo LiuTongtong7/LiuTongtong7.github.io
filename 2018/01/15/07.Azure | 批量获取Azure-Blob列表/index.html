@@ -43,7 +43,7 @@
     
     <title>
         
-            Python | Python入门篇 | 
+            Azure | 批量获取Azure Blob列表 | 
         
         Seven Space
     </title>
@@ -53,8 +53,8 @@
     <link rel="icon" href="/img/myfavicon.png">
 
     <meta name="format-detection" content="telephone=no"/>
-    <meta name="description" itemprop="description" content="本篇为Python学习笔记入门篇，适用于有一定C/C++基础的Python初学者。主要介绍Python语言的一些特性，语法方面主要记录了与C/C++有差异的地方。">
-    <meta name="keywords" content="编程, 摄影, 一切有趣的事情, Coding, Photography, Anything Interesting,Python">
+    <meta name="description" itemprop="description" content="介绍如何利用Azure Python SDK批量提取Blob的列表。">
+    <meta name="keywords" content="编程, 摄影, 一切有趣的事情, Coding, Photography, Anything Interesting,Azure,Python">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -220,7 +220,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Seven Space">
-    <meta name="msapplication-starturl" content="http://sevenspace.siyuan12.com/2014/10/29/01.Python | Python入门篇/">
+    <meta name="msapplication-starturl" content="http://sevenspace.siyuan12.com/2018/01/15/07.Azure | 批量获取Azure-Blob列表/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Seven Space">
@@ -239,16 +239,16 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="http://sevenspace.siyuan12.com/2014/10/29/01.Python | Python入门篇/">
+    <meta property="og:url" content="http://sevenspace.siyuan12.com/2018/01/15/07.Azure | 批量获取Azure-Blob列表/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Python | Python入门篇 | Seven Space">
+    <meta property="og:title" content="Azure | 批量获取Azure Blob列表 | Seven Space">
     <meta property="og:image" content="/img/myfavicon.png">
-    <meta property="og:description" content="本篇为Python学习笔记入门篇，适用于有一定C/C++基础的Python初学者。主要介绍Python语言的一些特性，语法方面主要记录了与C/C++有差异的地方。">
-    <meta property="og:article:tag" content="Python"> 
+    <meta property="og:description" content="介绍如何利用Azure Python SDK批量提取Blob的列表。">
+    <meta property="og:article:tag" content="Azure"> <meta property="og:article:tag" content="Python"> 
 
     
-        <meta property="article:published_time" content="Wed Oct 29 2014 00:00:00 GMT+0800">
-        <meta property="article:modified_time" content="Sun Mar 11 2018 23:00:05 GMT+0800">
+        <meta property="article:published_time" content="Mon Jan 15 2018 02:07:48 GMT+0800">
+        <meta property="article:modified_time" content="Mon Mar 12 2018 01:01:27 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -256,7 +256,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://sevenspace.siyuan12.com/2014/10/29/01.Python | Python入门篇/index.html" />
+        <link rel="canonical" href="http://sevenspace.siyuan12.com/2018/01/15/07.Azure | 批量获取Azure-Blob列表/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -268,10 +268,10 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "http://sevenspace.siyuan12.com/2014/10/29/01.Python | Python入门篇/index.html",
-    "headline": "Python | Python入门篇",
-    "datePublished": "Wed Oct 29 2014 00:00:00 GMT+0800",
-    "dateModified": "Sun Mar 11 2018 23:00:05 GMT+0800",
+    "mainEntityOfPage": "http://sevenspace.siyuan12.com/2018/01/15/07.Azure | 批量获取Azure-Blob列表/index.html",
+    "headline": "Azure | 批量获取Azure Blob列表",
+    "datePublished": "Mon Jan 15 2018 02:07:48 GMT+0800",
+    "dateModified": "Mon Mar 12 2018 01:01:27 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Ricardo Liu",
@@ -289,8 +289,8 @@
             "url": "/img/myfavicon.png"
         }
     },
-    "keywords": ",Python编程, 摄影, 一切有趣的事情, Coding, Photography, Anything Interesting",
-    "description": "本篇为Python学习笔记入门篇，适用于有一定C/C++基础的Python初学者。主要介绍Python语言的一些特性，语法方面主要记录了与C/C++有差异的地方。",
+    "keywords": ",Azure,Python编程, 摄影, 一切有趣的事情, Coding, Photography, Anything Interesting",
+    "description": "介绍如何利用Azure Python SDK批量提取Blob的列表。",
 }
 </script>
 
@@ -372,7 +372,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一、语言特点"><span class="post-toc-number">1.</span> <span class="post-toc-text">一、语言特点</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#二、数据类型"><span class="post-toc-number">2.</span> <span class="post-toc-text">二、数据类型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#三、变量和语句"><span class="post-toc-number">3.</span> <span class="post-toc-text">三、变量和语句</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-变量"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">1. 变量</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-语句"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">2. 语句</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#四、函数"><span class="post-toc-number">4.</span> <span class="post-toc-text">四、函数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-函数基础"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">1. 函数基础</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-Lambda函数"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">2. Lambda函数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-局部变量与全局变量"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">3. 局部变量与全局变量</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-包机制"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">4. 包机制</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#五、类"><span class="post-toc-number">5.</span> <span class="post-toc-text">五、类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-属性"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">1. 属性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-方法"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">2. 方法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-继承"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">3. 继承</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#六、文件读写"><span class="post-toc-number">6.</span> <span class="post-toc-text">六、文件读写</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#01-GUI工具"><span class="post-toc-number">1.</span> <span class="post-toc-text">01. GUI工具</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#02-Azure-SDK"><span class="post-toc-number">2.</span> <span class="post-toc-text">02. Azure SDK</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#03-优化"><span class="post-toc-number">3.</span> <span class="post-toc-text">03. 优化</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#04-代码"><span class="post-toc-number">4.</span> <span class="post-toc-text">04. 代码</span></a></li></ol>
     </ul>
     
 
@@ -404,7 +404,7 @@
         
     
             <p class="article-headline-p">
-                Python | Python入门篇
+                Azure | 批量获取Azure Blob列表
             </p>
         </div>
 
@@ -423,7 +423,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>Ricardo Liu</strong>
-        <span>10月 29, 2014</span>
+        <span>1月 15, 2018</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -445,7 +445,7 @@
 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
     <li class="mdl-menu__item">在其它设备中阅读本文章</li>
     
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC20lEQVR42u3aQXLjMAwEQP//09kXhJ4B7S2FbJ1SUWypeUGAwevnyuuFjY2NjY2NjY2N/Uj2K77Wn4oevPzm9bf99pfFO2NjY2MfzU5eN4etXze5m3+qeBNsbGzsC9jr0jIrM3kZW5fJnXfGxsbGxm7bgPYv10fTtiXY2NjY2C27LU75p/KmBRsbGxs7H9DkJaptTnYO7uuzNGxsbOzHs9sG4wk//9d8GxsbG/vB7PZaRwX53TwGyGPmN2+OjY2NfSi7bQPWxW8/GG4D4CJywMbGxj6UnQ/oc9JsrSeJfpPi+utzsbGxsY9mt63COoidNRLrpZ/kN8OhEjY2NvYR7ISR8GZHM2tO8jKJjY2NfTY7GscEd9uVzdnxtauc2NjY2Lexv/FaeUvTYtoAGBsbG/tsdltydsKDnfamLYfY2NjYN7DzQjJrLT4VAMxaI2xsbOzb2O0KzvogduKHPBIomhlsbGzso9nFaGb5+PbaOfp2iRMbGxv7BvZsrD9bAMobkllJKwoYNjY29h9n5wOdnbK0c5T5N2ylItjY2Nh/lt3i66H8aBjUlrSorGJjY2NfyW7bj3yVp21g8rvFUAkbGxv7CHa+2pgvU7aDpzb0HUbL2NjY2Iey81ffGSHlmLwcYmNjY2MnIWsb085GP22T84HlS2xsbOxD2e3gZtYe7ATDeaQRDZWwsbGxD2InxWy2/jhb2UyOu46csbGxsS9gb/2jXwYJ+SrPbJ0IGxsbG3v21UnZy8dGO+MqbGxs7HvY7dWGsu2CTrsAVBwuNjY29qHstki8GdzEA6Cdw5oNsLCxsbHPZudFKx8bfTYqbtuYIujFxsbGPojdDmv2h0dJO/EaXdjY2NjYbeHJQ9y8jckPZWtlBxsbG/ti9n60MBsw5c0SNjY29m3sbzxyv3XJC+SbQBobGxv7aHa74NgWm7wJaUPiIpzGxsbGPpR9z4WNjY2NjY2NjY39mOsfQvZ77n5D84gAAAAASUVORK5CYII=">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAAEOCAAAAABd2qZ5AAADj0lEQVR42u3awW4bMQwEUP//T7fXAka2M6TkGsXbU4A4lvT2wAzF1y/PH88LAQ4cOHDgwIEDBw4cX8zxip/3v3r/hvff/riJYJXntX7aVX0WHDhw4MBxgSPZ+k+fTxZ+XuX588nqs7PgwIEDB47bHPlhklL3vMW2qD+X9tVZcODAgQPH13C0ZThByVfEgQMHDhz/B8emPTdrJs6KOg4cOHDg+AaOoqEWbzEpq0nxbi/DPtQrxYEDBw4c64GG7//5o/MdOHDgwIHjjWP25KHrOcK1AS8ZravPggMHDhw4jnLMBtRODTpsVkziYvIKceDAgQPHWY7ZIEI+WJBztMMKyTcPIxwOHDhw4DjK0catPFzl5bONjrMLLRw4cODAcY+jjT3FYjFifrBToww4cODAgeM2xyzO5RHuBlP+r8DwFg4HDhw4cJQcpwJbXiD3QwybPePAgQMHjs9zJK239mD5IEJ+uZUU9QOFFgcOHDhwjCJcfmHTtufakJb/Nol20Rlx4MCBA8dRjjwatdc5G9bhwYKSjAMHDhw4bnPMhhvatuCN0jt7qThw4MCB4zZHsmTbnpuFq1nxnl2M4cCBAweO2xxtYJuFpc0wRBLnjhVaHDhw4MBxNMIlSyblMC/Ps0bkJi7iwIEDB457HG1Z2oSozcHyF9D+c4ADBw4cOD7DkYeuYuFg9G3WNGzLOQ4cOHDg+AzH5pJp1kzMR/Ta66uCEgcOHDhwXOPIt7L/hhZoX5Jx4MCBA8dnOPKQNhsm2ES4pPzP4iUOHDhw4LjHcaPQzgLeZjShfTE4cODAgeM2R/tFecmctf/ayJc3N3HgwIEDx22O9qtf5bM5zOypm4Y4cODAgeMaRxR4gk3cIIgukGYDfDhw4MCB4yjHrBy2TcO85Tcr1XlEHPZKceDAgQNHzLEPbxum5NizQFi8VBw4cODAcZRjVszaC572kO0n21eFAwcOHDjucbTPrJGXl722GCfFftUrxYEDBw4cJcdmUCApsbMrqySSPX8mbxHiwIEDB44bHO2Iw+y6aDMqsYlqw4EGHDhw4MCx5kiKU3K1kzfm8tcwaxEe65XiwIEDB45rHPlGZ5FsNrLw/GL+shYOHDhw4PinHEnQykcl2rh15WIMBw4cOHBc48ibg2fbiKfG5vIyjwMHDhw4bnPMNjrbesI3G7kbDu3hwIEDB46jHB4cOHDgwIEDBw4cOHB82fMbSMBigyg4mj0AAAAASUVORK5CYII=">
     
 </ul>
 
@@ -459,7 +459,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/Python/">Python</a>
+        <a class="post_tag-link" href="/tags/Azure/">Azure</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Python/">Python</a>
     </ul>
     
 
@@ -476,7 +476,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Python | Python入门篇&url=http://sevenspace.siyuan12.com/2014/10/29/01.Python | Python入门篇/index.html&pic=http://sevenspace.siyuan12.com/img/myfavicon.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Azure | 批量获取Azure Blob列表&url=http://sevenspace.siyuan12.com/2018/01/15/07.Azure | 批量获取Azure-Blob列表/index.html&pic=http://sevenspace.siyuan12.com/img/myfavicon.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -485,7 +485,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Python | Python入门篇&url=http://sevenspace.siyuan12.com/2014/10/29/01.Python | Python入门篇/index.html&via=Ricardo Liu" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Azure | 批量获取Azure Blob列表&url=http://sevenspace.siyuan12.com/2018/01/15/07.Azure | 批量获取Azure-Blob列表/index.html&via=Ricardo Liu" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -494,7 +494,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://sevenspace.siyuan12.com/2014/10/29/01.Python | Python入门篇/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://sevenspace.siyuan12.com/2018/01/15/07.Azure | 批量获取Azure-Blob列表/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -503,7 +503,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://sevenspace.siyuan12.com/2014/10/29/01.Python | Python入门篇/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://sevenspace.siyuan12.com/2018/01/15/07.Azure | 批量获取Azure-Blob列表/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -512,7 +512,7 @@
 
     <!-- Share LinkedIn -->
     
-        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://sevenspace.siyuan12.com/2014/10/29/01.Python | Python入门篇/index.html&title=Python | Python入门篇" target="_blank">
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://sevenspace.siyuan12.com/2018/01/15/07.Azure | 批量获取Azure-Blob列表/index.html&title=Azure | 批量获取Azure Blob列表" target="_blank">
             <li class="mdl-menu__item">
                 分享到 LinkedIn
             </li>
@@ -535,163 +535,103 @@
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
         <blockquote>
-<p><strong>摘要</strong>：本篇为Python学习笔记入门篇，适用于有一定C/C++基础的Python初学者。主要介绍Python语言的一些特性，语法方面主要记录了与C/C++有差异的地方。</p>
+<p><strong>摘要</strong>：介绍如何利用Azure Python SDK批量提取Blob的列表。</p>
 </blockquote>
 <a id="more"></a>
-<h2 id="一、语言特点"><a href="#一、语言特点" class="headerlink" title="一、语言特点"></a>一、语言特点</h2><ol>
-<li>面向对象</li>
-<li>平台无关</li>
-<li>强类型语言<ul>
-<li>强制数据类型定义，除非强制转换，数据类型不能改变，例如Python，C，C++，Java<blockquote>
-<p>弱类型语言如Javascript，php</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li>动态语言<ul>
-<li>在运行期间才去做数据类型检查。不用给变量指定数据类型，该语言会在第一次给变量赋值时记录数据类型<blockquote>
-<p>静态类型语言如C，C++，Java</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li>解释性语言<ul>
-<li>边翻译边执行，运行速度慢<blockquote>
-<p>编译性语言会首先翻译，优化代码，运行速度快</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li>脚本语言</li>
-</ol>
-<h2 id="二、数据类型"><a href="#二、数据类型" class="headerlink" title="二、数据类型"></a>二、数据类型</h2><blockquote>
-<p>type()可以返回变量类型</p>
-</blockquote>
+<p>最近碰到朋友的一个需求，要从Azure Blob Storage中获取所有图片的文件名列表，量级大约在百万左右。</p>
+<h2 id="01-GUI工具"><a href="#01-GUI工具" class="headerlink" title="01. GUI工具"></a>01. GUI工具</h2><p>由于之前并没有接触过Azure，一时间没有思路。于是做了以下的尝试，但都失败了：</p>
 <ol>
-<li>数值类型<ul>
-<li>复数：j</li>
-</ul>
-</li>
-<li>运算符<ul>
-<li>幂运算：**</li>
-</ul>
-</li>
-<li>布尔型<ul>
-<li>操作：and or not</li>
-</ul>
-</li>
-<li>字符串<ul>
-<li>\：转移字符</li>
-<li>r：使用原始串不转义 e.g. r’string\nstring’ =&gt; ‘string\nstring’</li>
-<li>字符串操作：连接+, 复制*, 下标索引[]</li>
-<li>字符串方法：count, 对齐函数[rjust, ljust, center], upper, lower, split, join, find, index, replace, isdigit, islower, isupper, startswith, endswith, strip, title</li>
-<li>字符串格式化：e.g. “Number %i %f won!” %(12, 11.5)</li>
-</ul>
-</li>
-<li>列表<ul>
-<li>列表操作：连接+, 复制*, 下标索引[]</li>
-<li>列表方法：append, extend, insert, remove, index, reverse, sort</li>
-<li>遍历方法：<code>for item in example_list print item</code></li>
-</ul>
-</li>
-<li>元组<ul>
-<li>与列表相似，但不能修改，没有方法<blockquote>
-<p><code>t = tuple(l)</code>：列表转换为元组<br><code>l = list(t)</code>：元组转换为列表</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li>字典<ul>
-<li>Key/Value值对</li>
-<li>字典方法：clear, copy&amp;deepcopy, keys, values, items</li>
-</ul>
-</li>
+<li>Microsoft官方提供的GUI - Azure Storage Explorer：在GUI界面里只能看到一个Container里的1000个文件，其余就不能加载了。</li>
+<li>Azure的Portal：与GUI类似，加载的数量有限，无法批量获取。</li>
+<li>第三方GUI - Azure Management Studio：在网上找到的第三方提供的GUI，功能比Azure Storage Explorer强大很多。右击某个文件夹有一个导出Blob List的选项，但是当文件夹中的文件数量超过一定阈值时，导出会失败。（据我个人推测，与Azure的API每次获取文件的数量有关，超过这个数量就不能导出了）</li>
 </ol>
+<h2 id="02-Azure-SDK"><a href="#02-Azure-SDK" class="headerlink" title="02. Azure SDK"></a>02. Azure SDK</h2><p>现有的GUI工具直接获取的思路行不通，于是我开始尝试利用Azure提供的SDK进行爬取。在<a href="https://docs.microsoft.com/en-us/azure/storage/" target="_blank" rel="noopener">Azure的官方文档</a>中，How to - Develop部分列出了Azure支持的开发方式，除了网上其他资源主要说的<code>.NET</code>外，还包括<code>Java</code>、<code>C++</code>、<code>Python</code>、<code>PHP</code>等几乎所有常见的语言，甚至还支持<code>REST</code>方式（官方样例使用的是<code>C#</code>）。</p>
+<p>本着“能写一个脚本解决的事情，绝不搞得太复杂”的原则，选择使用Python SDK进行操作。幸运的是，在<a href="https://docs.microsoft.com/en-us/azure/storage/blobs/storage-python-how-to-use-blob-storage" target="_blank" rel="noopener">Python SDK的介绍</a>中，刚好有一个小节是”List the blobs in a container“，给出的示例代码如下：</p>
+<pre><code class="Python">generator = block_blob_service.list_blobs(&#39;mycontainer&#39;)
+for blob in generator:
+    print(blob.name)
+</code></pre>
+<p>以为可以直接搞定，但是发现返回的结果只有5000张图片。看来介绍里的内容不够完整，于是去阅读<a href="http://azure-storage.readthedocs.io/index.html" target="_blank" rel="noopener">Azure Python SDK的文档</a>，找到了<a href="http://azure-storage.readthedocs.io/ref/azure.storage.blob.baseblobservice.html" target="_blank" rel="noopener">关于list_blobs函数的说明</a>：</p>
 <blockquote>
-<p>拷贝：对于列表、字典等类型（不包含数值类型和字符串类型）赋值代表引用，而不是拷贝。<br>a==b只比较值，a is b比较内存位置</p>
-</blockquote>
-<h2 id="三、变量和语句"><a href="#三、变量和语句" class="headerlink" title="三、变量和语句"></a>三、变量和语句</h2><h3 id="1-变量"><a href="#1-变量" class="headerlink" title="1. 变量"></a>1. 变量</h3><p>Python是动态语言，变量不指定类型。</p>
-<h3 id="2-语句"><a href="#2-语句" class="headerlink" title="2. 语句"></a>2. 语句</h3><blockquote>
-<p>同一层次的语句必须相同的缩进</p>
-</blockquote>
+<p>list_blobs(container_name, prefix=None, num_results=None, include=None, delimiter=None, marker=None, timeout=None)</p>
+<p>Returns a generator to list the blobs under the specified container. The generator will lazily follow the continuation tokens returned by the service and stop when all blobs have been returned or num_results is reached.</p>
+<p>If num_results is specified and the account has more than that number of blobs, the generator will have a populated next_marker field once it finishes. This marker can be used to create a new generator if more results are desired.</p>
+<p>Parameters:    </p>
 <ul>
-<li>if语句</li>
+<li>container_name (str) – Name of existing container.</li>
+<li>prefix (str) – Filters the results to return only blobs whose names begin with the specified prefix.</li>
+<li><strong>num_results</strong> (int) – Specifies the maximum number of blobs to return, including all BlobPrefix elements. If the request does not specify num_results or specifies a value greater than <strong>5,000</strong>, the server will return up to 5,000 items. Setting num_results to a value less than or equal to zero results in error response code 400 (Bad Request).</li>
+<li>include (Include) – Specifies one or more additional datasets to include in the response.</li>
+<li>delimiter (str) – When the request includes this parameter, the operation returns a BlobPrefix element in the result list that acts as a placeholder for all blobs whose names begin with the same substring up to the appearance of the delimiter character. The delimiter may be a single character or a string.</li>
+<li><strong>marker</strong> (str) – An opaque continuation token. This value can be retrieved from the <strong>next_marker</strong> field of a previous generator object if num_results was specified and that generator has finished enumerating results. If specified, this generator will begin returning results from the point where the previous generator stopped.</li>
+<li>timeout (int) – The timeout parameter is expressed in seconds.</li>
 </ul>
-<pre><code>if a == b:
-    print &quot;a == b&quot;
-elif a &gt; b:
-    print &quot;a &gt; b&quot;
-else:
-    print &quot;a &lt; b&quot;
-</code></pre><ul>
-<li>while语句</li>
-</ul>
-<pre><code>while true:
-    print &quot;Hello&quot;
-</code></pre><ul>
-<li>for语句</li>
-</ul>
-<pre><code>for i in range(10):
-    print &quot;Hello&quot;
-</code></pre><ul>
-<li>break与continue语句</li>
-</ul>
-<h2 id="四、函数"><a href="#四、函数" class="headerlink" title="四、函数"></a>四、函数</h2><h3 id="1-函数基础"><a href="#1-函数基础" class="headerlink" title="1. 函数基础"></a>1. 函数基础</h3><p>函数定义：</p>
-<pre><code>def sum(a, b):
-    return a + b
-</code></pre><p>函数调用：</p>
-<pre><code>r = sum(1, 2)
-print r
-</code></pre><blockquote>
-<p>特殊的参数传递方式：</p>
-<ul>
-<li>可以根据参数名进行参数传递</li>
-<li>*args元组参数可以表示多个参数</li>
-<li>**kwargs字典参数将多余的参数转为字典变量</li>
-</ul>
-<p>参数传递规则：</p>
-<ol>
-<li>非默认参数</li>
-<li>默认参数</li>
-<li>元祖参数（唯一）</li>
-<li>字典参数（唯一）</li>
-</ol>
 </blockquote>
-<h3 id="2-Lambda函数"><a href="#2-Lambda函数" class="headerlink" title="2. Lambda函数"></a>2. Lambda函数</h3><p>单行最小函数。e.g. (lambda x,y:x+y)(2,3)-&gt;5</p>
-<h3 id="3-局部变量与全局变量"><a href="#3-局部变量与全局变量" class="headerlink" title="3. 局部变量与全局变量"></a>3. 局部变量与全局变量</h3><ol>
-<li>通过参数传递时，数值类型和字符串类型为值传递，列表类型和字典类型为引用传递</li>
-<li>函数体内用global可声明全局变量</li>
-</ol>
-<h3 id="4-包机制"><a href="#4-包机制" class="headerlink" title="4. 包机制"></a>4. 包机制</h3><p><code>from mymodule import function</code></p>
-<h2 id="五、类"><a href="#五、类" class="headerlink" title="五、类"></a>五、类</h2><pre><code>class rectangle:
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
-    def area(self):
-        return x * y
-</code></pre><h3 id="1-属性"><a href="#1-属性" class="headerlink" title="1. 属性"></a>1. 属性</h3><ul>
-<li>私有属性：__attr</li>
-</ul>
-<h3 id="2-方法"><a href="#2-方法" class="headerlink" title="2. 方法"></a>2. 方法</h3><ul>
-<li>普通类方法：只有对象（类实例）可见</li>
-<li>静态方法@staticmethod：对类和对象可见<ul>
-<li>不接受一个隐式的第一个参数</li>
-</ul>
-</li>
-<li>类方法@classmethod：对类和对象可见<ul>
-<li>接受一个隐式的第一个参数</li>
-</ul>
-</li>
-</ul>
-<h3 id="3-继承"><a href="#3-继承" class="headerlink" title="3. 继承"></a>3. 继承</h3><pre><code>class rectanglee(shape):
-    ...
-</code></pre><h2 id="六、文件读写"><a href="#六、文件读写" class="headerlink" title="六、文件读写"></a>六、文件读写</h2><ol>
-<li>f=file/open(path, “w”/“r”/“a”)</li>
-<li>f.close()</li>
-<li>f.read()/readline()/readlines()</li>
-<li>f.write()/writeline()/writelines()</li>
-<li>f.tell(), f.seek(offset, position)</li>
-</ol>
+<p>发现了问题的关键所在：<code>list_blobs</code>每次返回的数量由<code>num_results</code>控制，至多为5,000，如果遍历尚未结束，则返回的结果中会有名为<code>next_marker</code>的field，在下一次调用<code>list_blobs</code>时将上一次调用结果里<code>next_marker</code>的值作为参数<code>marker</code>的值，则可以从上一次遍历结束的位置之后继续获取。于是，问题解决了。</p>
+<h2 id="03-优化"><a href="#03-优化" class="headerlink" title="03. 优化"></a>03. 优化</h2><p>写完脚本心满意足地开始运行时，发现速度感人，全部跑完大约需要60多个小时。由于原来图片是分别存放在多个文件夹中的，自然的想法就是并行化。将原来的任务打散，每个线程获取一个文件夹中的内容，最终大约花费两个小时的时间爬取了约100万个文件。</p>
+<h2 id="04-代码"><a href="#04-代码" class="headerlink" title="04. 代码"></a>04. 代码</h2><p>下面代码完成的功能是利用多线程（每个线程每次爬取的文件数为1000），爬取Azure Blob Container中名称为<code>beijingXXX</code>（XXX为001-100）的文件夹中所有文件的文件名，将结果保存在对应的<code>beijingXXX.txt</code>文件中。</p>
+<p>代码也可以在<a href="https://github.com/LiuTongtong7/Snippets/blob/master/Azure/list_blobs.py" target="_blank" rel="noopener">我的Github</a>中查看。</p>
+<pre><code class="Python">#!/usr/bin/python2
+# -*- coding:utf-8 -*-
+
+import multiprocessing
+import os
+import time
+
+from azure.storage.blob import BlockBlobService
+
+
+CONFIG = {
+    &#39;account_name&#39;: &#39;your_accout_name&#39;,
+    &#39;account_key&#39;: &#39;your_account_key&#39;,
+    &#39;container_name&#39;: &#39;your_container_name&#39;
+}
+NUM_PER_ITERATION = 1000
+
+
+def list_blobs(folder):
+    block_blob_service = BlockBlobService(account_name=CONFIG[&#39;account_name&#39;], account_key=CONFIG[&#39;account_key&#39;])
+    fp = open(folder + &#39;.txt&#39;, &#39;a+&#39;)
+
+    counter = 0
+    print &quot;{} - {} - COUNT {}&quot;.format(folder, time.asctime(time.localtime()), counter)
+    blob_list = list()
+    generator = block_blob_service.list_blobs(container_name=CONFIG[&#39;container_name&#39;], prefix=folder,
+                                              num_results=NUM_PER_ITERATION)
+    for blob in generator:
+        blob_list.append(blob.name)
+    fp.write(&#39;\n&#39;.join(blob_list) + &#39;\n&#39;)
+    next_marker = generator.next_marker
+    counter += len(blob_list)
+    print &quot;{} - {} - COUNT {}&quot;.format(folder, time.asctime(time.localtime()), counter)
+    while next_marker:
+        blob_list = list()
+        generator = block_blob_service.list_blobs(container_name=CONFIG[&#39;container_name&#39;], prefix=folder,
+                                                  num_results=NUM_PER_ITERATION, marker=next_marker)
+        for blob in generator:
+            blob_list.append(blob.name)
+        fp.write(&#39;\n&#39;.join(blob_list) + &#39;\n&#39;)
+        next_marker = generator.next_marker
+        counter += len(blob_list)
+        print &quot;{} - {} - COUNT {}&quot;.format(folder, time.asctime(time.localtime()), counter)
+    fp.close()
+
+
+if __name__ == &#39;__main__&#39;:
+    print time.asctime(time.localtime()) + &quot; PID: {}&quot;.format(os.getpid())
+    folders = list()
+    for i in range(1, 101):
+        folders.append(&#39;{}{:0&gt;3}&#39;.format(&#39;beijing&#39;, i))
+
+    pool = multiprocessing.Pool()
+    for i in xrange(len(folders)):
+        folder = folders[i]
+        print &quot;{} - {} - START...&quot;.format(folder, time.asctime(time.localtime()))
+        pool.apply_async(list_blobs, args=(folder,))
+    pool.close()
+    pool.join()
+    print time.asctime(time.localtime()) + &quot; Done.&quot;
+</code></pre>
 
         
     
@@ -746,8 +686,8 @@ print r
 
 <script type="text/javascript">
     var disqus_config = function () {
-        this.page.url = 'http://sevenspace.siyuan12.com/2014/10/29/01.Python | Python入门篇/';  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = 'http://sevenspace.siyuan12.com/2014/10/29/01.Python | Python入门篇/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = 'http://sevenspace.siyuan12.com/2018/01/15/07.Azure | 批量获取Azure-Blob列表/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://sevenspace.siyuan12.com/2018/01/15/07.Azure | 批量获取Azure-Blob列表/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 </script>
 
@@ -796,7 +736,7 @@ print r
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2014/12/22/02.Haskell | Monad初探/" id="post_nav-newer" class="prev-content">
+        <a href="/2018/01/24/06.撒币游戏 | 一次有趣的博弈论实践/" id="post_nav-newer" class="prev-content">
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_back</i>
             </button>
@@ -809,6 +749,14 @@ print r
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
+    
+        <a href="/2015/03/31/05.Mac | Mac各种折腾v1-0/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
     
 </nav>
 
@@ -894,7 +842,7 @@ print r
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2018/01/">一月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/03/">三月 2015<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/02/">二月 2015<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/12/">十二月 2014<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/10/">十月 2014<span class="sidebar_archives-count">1</span></a>
+                <a class="sidebar_archives-link" href="/archives/2018/01/">一月 2018<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/03/">三月 2015<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/02/">二月 2015<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/12/">十二月 2014<span class="sidebar_archives-count">1</span></a>
             </ul>
         </li>
         
@@ -912,7 +860,7 @@ print r
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/Haskell/">Haskell<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Mac/">Mac<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/Python/">Python<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/密码学/">密码学<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/经济学/">经济学<span class="sidebar_archives-count">1</span></a>
+                <a class="sidebar_archives-link" href="/categories/Azure/">Azure<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Haskell/">Haskell<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Mac/">Mac<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/密码学/">密码学<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/经济学/">经济学<span class="sidebar_archives-count">1</span></a>
             </ul>
         </li>
         
