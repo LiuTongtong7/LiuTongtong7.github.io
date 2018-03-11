@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.2 -->
+    <script>
+        window.materialVersion = "1.5.2"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            撒币游戏 | 一次有趣的博弈论实践 | 
+        
+        Neverland
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/myfavicon.png">
+    <link rel="icon" href="/img/myfavicon.png">
+
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="description" itemprop="description" content="最近，借着生日的契机，在公众号里进行了一次「撒币」游戏。让我们回顾一下这次游戏里有哪些有趣的事情吧。">
+    <meta name="keywords" content="Coding, Apple, Photograph, Anything Interesting,博弈论">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Neverland">
+    <meta name="msapplication-starturl" content="http://neverland.siyuan12.com/2018/01/24/06.撒币游戏 | 一次有趣的博弈论实践/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Neverland">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/myfavicon.png">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://neverland.siyuan12.com/2018/01/24/06.撒币游戏 | 一次有趣的博弈论实践/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="撒币游戏 | 一次有趣的博弈论实践 | Neverland">
+    <meta property="og:image" content="/img/myfavicon.png">
+    <meta property="og:description" content="最近，借着生日的契机，在公众号里进行了一次「撒币」游戏。让我们回顾一下这次游戏里有哪些有趣的事情吧。">
+    <meta property="og:article:tag" content="博弈论"> 
+
+    
+        <meta property="article:published_time" content="Wed Jan 24 2018 00:05:12 GMT+0800">
+        <meta property="article:modified_time" content="Wed Jan 24 2018 01:00:51 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://neverland.siyuan12.com/2018/01/24/06.撒币游戏 | 一次有趣的博弈论实践/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://neverland.siyuan12.com/2018/01/24/06.撒币游戏 | 一次有趣的博弈论实践/index.html",
+    "headline": "撒币游戏 | 一次有趣的博弈论实践",
+    "datePublished": "Wed Jan 24 2018 00:05:12 GMT+0800",
+    "dateModified": "Wed Jan 24 2018 01:00:51 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "Ricardo Liu",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.png"
+        },
+        "description": "Hi, nice to meet you"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Neverland",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/myfavicon.png"
+        }
+    },
+    "keywords": ",博弈论Coding, Apple, Photograph, Anything Interesting",
+    "description": "最近，借着生日的契机，在公众号里进行了一次「撒币」游戏。让我们回顾一下这次游戏里有哪些有趣的事情吧。",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#01-游戏规则"><span class="post-toc-number">1.</span> <span class="post-toc-text">01.游戏规则</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#02-条件分析"><span class="post-toc-number">2.</span> <span class="post-toc-text">02.条件分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#03-策略设计"><span class="post-toc-number">3.</span> <span class="post-toc-text">03.策略设计</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一、不合作下的情况"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">一、不合作下的情况</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二、允许合作下的情况"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">二、允许合作下的情况</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#04-结果统计"><span class="post-toc-number">4.</span> <span class="post-toc-text">04.结果统计</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#05-结果分析"><span class="post-toc-number">5.</span> <span class="post-toc-text">05.结果分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考资料"><span class="post-toc-number">6.</span> <span class="post-toc-text">参考资料</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#附录"><span class="post-toc-number">7.</span> <span class="post-toc-text">附录</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#三名玩家进行游戏的纳什均衡分析"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">三名玩家进行游戏的纳什均衡分析</span></a></li></ol></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                撒币游戏 | 一次有趣的博弈论实践
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Ricardo Liu</strong>
+        <span>1月 24, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/博弈论/">博弈论</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=撒币游戏 | 一次有趣的博弈论实践&url=http://neverland.siyuan12.com/2018/01/24/06.撒币游戏 | 一次有趣的博弈论实践/index.html&pic=http://neverland.siyuan12.com/img/myfavicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=撒币游戏 | 一次有趣的博弈论实践&url=http://neverland.siyuan12.com/2018/01/24/06.撒币游戏 | 一次有趣的博弈论实践/index.html&via=Ricardo Liu" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://neverland.siyuan12.com/2018/01/24/06.撒币游戏 | 一次有趣的博弈论实践/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://neverland.siyuan12.com/2018/01/24/06.撒币游戏 | 一次有趣的博弈论实践/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>最近，借着生日的契机，在<a href="/BlogImages/撒币游戏/公众号二维码.jpg" target="_blank">我的公众号</a>里进行了一次「撒币」游戏。原本是在微观经济学课上玩过一个类似的游戏，突然奇想就亲自组织了一次。让我们回顾一下这次游戏里有哪些有趣的事情吧。</p>
+<h2 id="01-游戏规则"><a href="#01-游戏规则" class="headerlink" title="01.游戏规则"></a>01.游戏规则</h2><blockquote>
+<p>本次撒币游戏的规则如下：在本号后台回复1-100的一个整数即可参与，活动结束后，回复没有与其他人重复的最大数字的同学即为本次的赢家，可以获得价格等于该数字的红包或礼物。</p>
+</blockquote>
+<p>从规则中可以看出玩家的<strong>报酬</strong>情况是，获胜玩家的报酬等于其选择的数字，其余玩家报酬为0。当然，存在一种特殊情况是，如果所有数字均有重复，则无人获得奖金，庄家是唯一赢家。为了分析方便，我们认为此时所有人的报酬是负数，即所有人都会厌恶从而避免这种情况。</p>
+<h2 id="02-条件分析"><a href="#02-条件分析" class="headerlink" title="02.条件分析"></a>02.条件分析</h2><p>从游戏的规则设定中，我们可以知道什么呢？</p>
+<ul>
+<li>虽然所有人做出决策的时刻不同，但由于截止时间前每个人的决策结果对其他人是不可见的，所以游戏的过程可以视为一次<strong>静态博弈</strong>。</li>
+<li>每个人的预期报酬是由自己所选的数字决定的，报酬的定价机制会激励玩家选更大的数字。</li>
+<li>结合游戏规则可以看出，<strong>越少</strong>的玩家参与，每个玩家获胜的几率都会越高，没有激励会使得玩家转发这次游戏，所以这次游戏是几乎没有二次<strong>传播性</strong>的（忧伤）。</li>
+<li>果然，从推送的阅读量可以估计出游戏的<strong>参与人数</strong>基本是100以内（忧伤x2），可以断定绝大多数玩家都是庄家TT的一度联系人，由此可以推出玩家群体中应该存在多个互相熟悉的社交圈。再考虑到奖金的可分性，于是存在<strong>合作</strong>的可能性。</li>
+<li>由于规则没有禁止玩家间的交流，每名玩家可以通过线上或线下的渠道发表任意的观点，玩家间的<strong>交流</strong>是可能的。</li>
+</ul>
+<h2 id="03-策略设计"><a href="#03-策略设计" class="headerlink" title="03.策略设计"></a>03.策略设计</h2><h3 id="一、不合作下的情况"><a href="#一、不合作下的情况" class="headerlink" title="一、不合作下的情况"></a>一、不合作下的情况</h3><p>首先定义一下<strong>纳什均衡</strong>（Nash Equilibrium）的概念。对于一个博弈问题，如果固定其他所有人的策略，任一参与者不能通过改变自身的策略获得更好的报酬，就达到了一个纳什均衡。通俗地说就是，谁先动谁就输了。具体可以参见<a href="https://en.wikipedia.org/wiki/Nash_equilibrium" target="_blank" rel="noopener">维基</a>或<a href="https://baike.baidu.com/item/%E7%BA%B3%E4%BB%80%E5%9D%87%E8%A1%A1" target="_blank" rel="noopener">百度</a>。</p>
+<p>如果从“理性人”的假设出发，显然所有玩家决策的策略应该是一样的。如果每名玩家的策略是选择一个确定的数字，则所有玩家都会选择一样的数字，此时任意一名玩家选择另外一个数字，TA就成为了唯一的赢家（假设玩家数≥3），所以容易推出确定策略的均衡是不存在的（即不存在<strong>纯策略</strong>纳什均衡）。于是考虑混合策略。<strong>混合策略</strong>的决策是定义在策略集上的一个概率分布，比如以50%概率选100，50%概率选99。</p>
+<p>由于玩家数量不确定，我们按照玩家数量从少到多逐步分析。</p>
+<ul>
+<li>如果只有2名玩家，容易知道在没有合作的情况下，每人的最优方案都是选100，是存在纯策略纳什均衡的。当玩家数≥3后，如上所述，纯策略的均衡就不存在了。</li>
+<li>如果有3名玩家，情况复杂一些。尝试证明了一下，混合策略下的纳什均衡解是分布在1-100上的一个概率分布，每一个数字都有可能被选中，并且选择更大的数字概率更高（过程见附录）。</li>
+<li>于是显然，当玩家数更多的时候，<strong>混合策略下的纳什均衡解同样也是1-100上的一个概率分布，选择大数的概率更高</strong>。</li>
+</ul>
+<p>不合作的情况下，能分析的内容到这里似乎就结束了。我猜多数人看到这里的想法是：这有什么用？（当然我没法验证这个想法。）这就反映了推理本身的出发点「理性人」的假设是不对的，在现实中，除了学习或者研究外，几乎没有人是具有能力并且愿意进行无限推理的。<strong>理性是有限的</strong>，才是更现实的情况。</p>
+<h3 id="二、允许合作下的情况"><a href="#二、允许合作下的情况" class="headerlink" title="二、允许合作下的情况"></a>二、允许合作下的情况</h3><p>考虑如下的情况，有一名玩家A通过某种渠道告知游戏中其他所有玩家：我选了100。这时其他所有玩家会怎么做呢？如果选择100，自己就和A一起输掉了，这时候其他玩家就有机会获胜了；而如果所有人都不选择100，则A如果真的选择了100，就获胜了。那么是否会有人选择100呢？如果假设所有人是理性且自私的，在没有合作的情况下，是不会有人选择100的。</p>
+<p>为了不让A获胜，该怎么办呢？于是<strong>合作和联盟</strong>出现了。B和C是室友，在商议之后决定，B选择100，C选择99，如果C获奖的话，BC平分奖金。通过这种策略，BC的联盟成功击败了A这种看似必胜的策略，并且任一单独的玩家是不可能战胜BC的联盟的。<strong>合作博弈下，联盟通过降低联盟外玩家的胜率，提高了自己内部的胜率。</strong>那么如果战胜BC的联盟呢？更大的联盟。DEF三人的联盟选择了98，99和100，BC联盟就失败了。</p>
+<p>推广下去，更大的联盟就意味着更高的赢面。当玩家数不超过100时，<strong>必胜的方案是组织起一半的玩家，从大到小依次选择100, 99, 98…</strong>这时联盟外的玩家是不可能获胜的，联盟平分了奖金。当然，游戏的奖金金额能否激励大家去组织这样的事情，就是另外一个问题了，唉，穷。</p>
+<h2 id="04-结果统计"><a href="#04-结果统计" class="headerlink" title="04.结果统计"></a>04.结果统计</h2><p>最终有<strong>50</strong>名有效的玩家参与了这次游戏，其中数据的茎叶图如下。最终获胜的是选择98数字的同学。</p>
+<p><img src="/BlogImages/撒币游戏/撒币结果统计.png" alt="结果统计"></p>
+<h2 id="05-结果分析"><a href="#05-结果分析" class="headerlink" title="05.结果分析"></a>05.结果分析</h2><p>从最后的数据中，我们可以看到些什么呢？</p>
+<ul>
+<li>有8名玩家选择了50以下的数字。由于奖励是与选择的数字挂钩的，无论从何种角度来看，这都不像理性人所作出的决策。为什么会出现这批玩家呢？我猜测是这样的金额不足以引起他们的兴趣，皮这一下的快乐远胜过金钱，所以…欢迎土豪们！</li>
+<li>有20名玩家选择了50-89。由于没有实际采访过这些玩家，所以无法断定他们的动机。我的猜测是他们对整个游戏的<strong>玩家规模</strong>有着错误，具体来说是，过于乐观的估计，所以保守选择了偏小的数字，尤其是70-89的玩家。</li>
+<li>剩下的22名玩家分布在91-100的区间内。这部分竞争颇为激烈，根据我在后台的观察，如果按照时间顺序列出获奖数字的话，是<strong>94-99-100-96-97-98</strong>，胜与负就在一念之间，激进的人群里偏保守的玩家笑到了最后。</li>
+<li>除了分布，这个结果还能给我们什么样的启发呢？如果想赢的话，<strong>别选特殊数字</strong>。77（嗯很多人的幸运数字）、93、94（出生年份）、97（100内最大的质数）上发生了大量的撞车，就是最好的体现。当然，有些玩家是执意选择幸运数字的，这就是另一回事了。</li>
+</ul>
+<p><img src="/BlogImages/撒币游戏/撒币之玩家交流.jpg" alt="玩家例子"></p>
+<p>除了结果外，游戏的过程中也发生了一些有趣的事情。在条件分析和策略设计里，我们提到，玩家间的交流是可能。在实际游戏过程中，真的出现了这样一位「戏精」同学，简直是读着剧本进行的演出：</p>
+<ul>
+<li>在自己的朋友圈内尽可能广播自己选择100的消息，</li>
+<li>向其他人强调了选择100的同归于尽的后果，</li>
+<li>以及，“本来不想分享的”充分证明了本次活动没有二次传播性（心累）。</li>
+</ul>
+<p>在知道TA最后选了啥之后…我决定颁发一枚「最佳戏精奖」👏</p>
+<hr>
+<p>这次的分析就到这里了。如果你有关于这次活动有什么想法，或者有什么新活动的点子，欢迎关注<a href="/BlogImages/撒币游戏/公众号二维码.jpg" target="_blank">我的公众号</a>跟我交流呀。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://www.zhihu.com/question/39418994" target="_blank" rel="noopener">知乎 | 10个人各自从1-10选数字，尽量让自己最大且不重复，如何选？</a></li>
+</ul>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><h3 id="三名玩家进行游戏的纳什均衡分析"><a href="#三名玩家进行游戏的纳什均衡分析" class="headerlink" title="三名玩家进行游戏的纳什均衡分析"></a>三名玩家进行游戏的纳什均衡分析</h3><p>按照每个人的策略集中的选项数进行分类讨论。显然选项数应该大于1。</p>
+<ol>
+<li>如果包含两种选项，则一定是100和99，假定最优的混合策略为以概率$p$选100，概率$1-p$选99。<ul>
+<li>首先求解均衡策略。均衡时，选择100和99的预期报酬应该是一样的（即混合策略纳什均衡成立的条件），否则玩家一定会选择预期报酬更高的数字，混合策略就失效了。选择100的预期收益为$100(1-p)^2$，选择99的预期收益为$99p^2$，令它们相等。由于$100 \approx 99$，可以约掉，于是解出$p=0.5$，即50%概率选100，50%概率选99。如果所有人都选择该策略，则每个人获胜的概率为1/4，预期报酬为25。</li>
+<li>下面需要验证一下，该策略是否是最优的。固定前两名玩家使用该策略，我们从第三名玩家的角度验证一下该策略是否可以改进。可以发现，如果三个人都选择一样的数字（概率为1/4），则没有人获胜，是否可以利用这种情况来提高自己的胜率呢？答案是可以的。例如，第三名玩家可以采用这样的混合策略：50%的概率选择100，各25%的概率选择99和98。稍加计算可以得出TA的获胜概率约5/16（认为$100 \approx 99 \approx 98$），大于1/4，则该策略不是纳什均衡的。</li>
+<li>所以，不存在包含两种选项的均衡混合策略。</li>
+</ul>
+</li>
+<li>如果包含三种选项，则一定是100，99和98。用类似的方式求解，依然可以发现该策略也不是最优的，存在包含四种选项的解可以严格更优。</li>
+<li>于是猜想均衡时的混合策略，在1-100中所有数字上都应该有概率选中。采用反证法证明。如果两名玩家只选中部分数字，则第三名玩家可以通过利用前两人选中一样数字的情况来提高自己的胜率。此猜想可以证明如下：<ol>
+<li>假设均衡策略包含数字$n_1 &gt; n_2 &gt; \ldots &gt; n_m$，在其上的概率分布为$p_1, \ldots, p_m$，$\forall i = 1, 2, \ldots, m, p<em>i &gt; 0, \sum</em>{i=1}^m p_i=1$，其中$m&lt;100$</li>
+<li>根据均衡条件，可知对于任意一名玩家，在$n_1, n_2, \ldots, n_m$中选择任一数字，获胜的概率都是$(1-p_1)^2$，所以按照此策略，每名玩家的预期胜率都是$(1-p_1)^2$</li>
+<li>因为$m<100$，存在1-100中的某个整数$n'$不在$n_1, n_2,="" \ldots,="" n_m$中，假设$n_k="">n'>n_{k+1}$（如果$k=m$，则$n_k&gt;n’$）</100$，存在1-100中的某个整数$n'$不在$n_1,></li>
+<li>现固定前两名玩家的策略，设计第三名玩家的策略如下：选择$n_1$的概率为$p_1’=p_1-p’$，选择$n’$的概率为$p’$，其中$0<p'<p_1$，选择其他数字的概率不变。可以推得此玩家的胜率为$$(1-p_1)^2 *="" (1-p')="" +="" (p_1^2+…+p_k^2+(1-p_1-…-p_k)^2)="" p'.$$="" 根据均衡条件，选择$n_1$和$n_k$的胜率应当相同，所以有$$(1-p_1)^2="p_1^2+…+p_k-1^2+(1-p_1-…-p_k)^2,$$" 所以胜率为="" $$\begin{eqnarray*}="" &&(1-p_1)^2="" p'="" \\="" &="&(1-p_1)^2" ((1-p_1)^2+p_k^2)="" p_k^2="">&amp; (1-p_1)^2 \end{eqnarray*}$$</p'<p_1$，选择其他数字的概率不变。可以推得此玩家的胜率为$$(1-p_1)^2></li>
+<li>所以该策略不是均衡策略，假设不成立。又由于纳什证明了每个玩家策略是有限种的情况下，纳什均衡一定存在，所以均衡策略在1-100中所有数字上都应该有概率选中，证毕。</li>
+</ol>
+</li>
+</ol>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2015/03/31/05.Mac | Mac各种折腾v1-0/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="Ricardo Liu's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        youremail@email.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2018/01/">一月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/03/">三月 2015<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/02/">二月 2015<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/12/">十二月 2014<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/10/">十月 2014<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+
+    <!-- Pages  -->
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            主题 - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-twitter">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-facebook">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-gplus">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+    
+    <!-- V2EX -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>Neverland
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?V/53wGualMuiPM3xoetD5Q==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.2 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>

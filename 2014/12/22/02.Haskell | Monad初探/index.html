@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.2 -->
+    <script>
+        window.materialVersion = "1.5.2"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            Haskell | Monad初探 | 
+        
+        Neverland
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/myfavicon.png">
+    <link rel="icon" href="/img/myfavicon.png">
+
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="description" itemprop="description" content="坑太深。。。学好数学真重要！！！">
+    <meta name="keywords" content="Coding, Apple, Photograph, Anything Interesting,Haskell,Monad,范畴论">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Neverland">
+    <meta name="msapplication-starturl" content="http://neverland.siyuan12.com/2014/12/22/02.Haskell | Monad初探/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Neverland">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/myfavicon.png">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://neverland.siyuan12.com/2014/12/22/02.Haskell | Monad初探/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Haskell | Monad初探 | Neverland">
+    <meta property="og:image" content="/img/myfavicon.png">
+    <meta property="og:description" content="坑太深。。。学好数学真重要！！！">
+    <meta property="og:article:tag" content="Haskell"> <meta property="og:article:tag" content="Monad"> <meta property="og:article:tag" content="范畴论"> 
+
+    
+        <meta property="article:published_time" content="Mon Dec 22 2014 16:08:00 GMT+0800">
+        <meta property="article:modified_time" content="Wed Jan 24 2018 00:51:04 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://neverland.siyuan12.com/2014/12/22/02.Haskell | Monad初探/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://neverland.siyuan12.com/2014/12/22/02.Haskell | Monad初探/index.html",
+    "headline": "Haskell | Monad初探",
+    "datePublished": "Mon Dec 22 2014 16:08:00 GMT+0800",
+    "dateModified": "Wed Jan 24 2018 00:51:04 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "Ricardo Liu",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.png"
+        },
+        "description": "Hi, nice to meet you"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Neverland",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/myfavicon.png"
+        }
+    },
+    "keywords": ",Haskell,Monad,范畴论Coding, Apple, Photograph, Anything Interesting",
+    "description": "坑太深。。。学好数学真重要！！！",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#概念解释"><span class="post-toc-number">1.</span> <span class="post-toc-text">概念解释</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#类型系统"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">类型系统</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#函数与函子"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">函数与函子</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#自函数与自函子"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">自函数与自函子</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#范畴"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">范畴</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#函子深入"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">函子深入</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#半群与幺半群"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">半群与幺半群</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Monad"><span class="post-toc-number">2.</span> <span class="post-toc-text">Monad</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#自函子范畴"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">自函子范畴</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#自函子范畴上的幺半群"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">自函子范畴上的幺半群</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#封闭性"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">封闭性</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#结合律"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">结合律</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#幺元"><span class="post-toc-number">2.2.3.</span> <span class="post-toc-text">幺元</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Monad有什么用"><span class="post-toc-number">3.</span> <span class="post-toc-text">Monad有什么用</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#程序示例"><span class="post-toc-number">4.</span> <span class="post-toc-text">程序示例</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考资料"><span class="post-toc-number">5.</span> <span class="post-toc-text">参考资料</span></a></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Haskell | Monad初探
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Ricardo Liu</strong>
+        <span>12月 22, 2014</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Haskell/">Haskell</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Monad/">Monad</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/范畴论/">范畴论</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Haskell | Monad初探&url=http://neverland.siyuan12.com/2014/12/22/02.Haskell | Monad初探/index.html&pic=http://neverland.siyuan12.com/img/myfavicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Haskell | Monad初探&url=http://neverland.siyuan12.com/2014/12/22/02.Haskell | Monad初探/index.html&via=Ricardo Liu" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://neverland.siyuan12.com/2014/12/22/02.Haskell | Monad初探/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://neverland.siyuan12.com/2014/12/22/02.Haskell | Monad初探/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>我试图从如下的定义里看穿Monad的真相。不知道眼力够不够了😂</p>
+<blockquote>
+<p>A monad in X is just a monoid in the category of endofunctors of X, with product × replaced by composition of endofunctors and unit set by the identity endofunctor.</p>
+<p>Monad是自函子范畴上的幺半群。</p>
+</blockquote>
+<h2 id="概念解释"><a href="#概念解释" class="headerlink" title="概念解释"></a>概念解释</h2><p>首先，对于如下相关的概念我尝试给出我自己的定义。</p>
+<h3 id="类型系统"><a href="#类型系统" class="headerlink" title="类型系统"></a>类型系统</h3><p>Haskell的类型系统相当复杂。不同于OO只是一层抽象，Haskell抽象多得可怕。目前我给出的分层如下：</p>
+<p><img src="/BlogImages/Monad初探/Monad_1.png" alt=""></p>
+<p>从下往上是按照从具体到抽象。首先是具体的值<code>Value</code>，其次是将<code>Value</code>抽象为特定类型<code>Proper Type</code>，然后<code>Proper Type</code>又被抽象为高阶(包含一阶)类型<code>Higher Order Type</code>，最后是最抽象的<code>kind</code>。而<code>Monad</code>是什么呢？它是<code>kind</code>为<code>* -&gt; *</code>的一种类型类。</p>
+<h3 id="函数与函子"><a href="#函数与函子" class="headerlink" title="函数与函子"></a>函数与函子</h3><blockquote>
+<p>此处的函数狭义地仅指Haskell里的方法，即输入参数和输出参数均为<code>Proper Type</code>的一一映射</p>
+</blockquote>
+<p>函数<code>Function</code>是指输入参数和输出参数均为<code>Proper Type</code>的一一映射，而函子<code>Functor</code>是指输入参数和输出参数均为<code>Higher Order Type</code>的一一映射。其中<code>Functor</code>的定义不够准确，在范畴部分会继续补充。</p>
+<h3 id="自函数与自函子"><a href="#自函数与自函子" class="headerlink" title="自函数与自函子"></a>自函数与自函子</h3><p>前面我们已经给出了<code>Function</code>的定义，用代码表示就是<code>Type A -&gt; Type B</code>。如果此处的<code>Type B</code>包含于<code>Type A</code>，那么我们就称此函数为自函数<code>Endofunction</code>。特别的，如果<code>Type B</code>等于<code>Type A</code>，则称其为<code>Identity Function</code>。</p>
+<p>类比自函数，什么是自函子<code>Endofunctor</code>呢？对于<code>Higher Order Type A -&gt; Higher Order Type B</code>，如果<code>Higher Order Type B</code>包含于<code>Higher Order Type A</code>，则我们称此函子为自函子。同样的，如果<code>Higher Order Type B</code>等于<code>Higher Order Type A</code>，则称其为<code>Identity Functor</code>。</p>
+<h3 id="范畴"><a href="#范畴" class="headerlink" title="范畴"></a>范畴</h3><p>我不打算从很严谨的定义阐明范畴<code>Category</code>的概念。通俗地讲，我理解的范畴就是对象+态射。那么在Haskell中什么是范畴呢？</p>
+<p>最重要的我认为是一个<code>Higher Order Type</code>对应于一个<code>Category</code>，其中被该<code>Higher Order Type</code>所抽象的<code>Proper Type</code>就是该<code>Category</code>的对象，而以这些<code>Proper Type</code>为入参和出参的<code>Function</code>就是该<code>Category</code>的态射。</p>
+<h3 id="函子深入"><a href="#函子深入" class="headerlink" title="函子深入"></a>函子深入</h3><p>然后<code>Functor</code>的概念可以进一步深入。刚刚说道，函子<code>Functor</code>是指输入参数和输出参数均为<code>Higher Order Type</code>的一一映射，更准确的，<code>Functor</code>是<code>Higher Order Type</code>所对应的范畴之间的映射，它包括对对象的映射和对态射的映射。举个例子，考虑<code>a -&gt; [a]</code>作为<code>Functor</code>，它是<code>Identity</code>对应的范畴和<code>List</code>对应的范畴之间的映射。第一它可以作为对象之间的映射，例如它是<code>Int -&gt; [Int]</code>之间的映射，第二，作为对态射的映射，由于<code>[]</code>有<code>map</code>方法，所以它还是<code>(Int -&gt; Int) -&gt; [Int] -&gt; [Int]</code>之间的映射。</p>
+<blockquote>
+<p>在Haskell中有类型类<code>Functor</code>，它接受高阶类型作为实例，高阶类型本身就是类型构造器，它就是对象之间的映射。<code>Functor</code>实例必须实现<code>fmap</code>方法，它又是态射之间的映射。</p>
+</blockquote>
+<h3 id="半群与幺半群"><a href="#半群与幺半群" class="headerlink" title="半群与幺半群"></a>半群与幺半群</h3><p>我们知道群是指满足的封闭性、结合律、有幺元、逆元的非空集合+二元运算<code>(G, *)</code>。当<code>(G, *)</code>满足封闭性、结合律时它是一个半群，进一步，如果还有幺元，则它是一个幺半群。</p>
+<h2 id="Monad"><a href="#Monad" class="headerlink" title="Monad"></a>Monad</h2><p>上面说了一大堆，如果不具体到Monad的定义上被觉得都是扯淡。回顾开头部分引用的定义。</p>
+<blockquote>
+<p>Monad是自函子范畴上的幺半群。</p>
+</blockquote>
+<h3 id="自函子范畴"><a href="#自函子范畴" class="headerlink" title="自函子范畴"></a>自函子范畴</h3><p>首先，考虑什么是自函子范畴？上面说过，粗浅地认为范畴=对象+态射。既然是自函子范畴，对象自然是自函子。而实际上如果把Haskell所有类型和方法统一作为一个范畴，则Haskell上所有的函子都是自函子（<strong>这一点还有些模糊</strong>）。用Haskell代码表示这里的自函子就是<code>a -&gt; m b</code>，其中<code>a, b</code>是类型参数，<code>m</code>是高阶类型。</p>
+<p>那么接下来的问题就是自函子范畴上的态射是什么。根据函子范畴的定义，这里的态射叫做自然变换。维基上的解释还比较清晰，用Haskell代码表示从函子<code>a - &gt; m b</code>到<code>a -&gt; m c</code>的自然变换就是<code>m b -&gt; m c</code>。所有这些自然变换就构成了自函子范畴上的态射。</p>
+<h3 id="自函子范畴上的幺半群"><a href="#自函子范畴上的幺半群" class="headerlink" title="自函子范畴上的幺半群"></a>自函子范畴上的幺半群</h3><p>然后作为这个自函子范畴上的幺半群<code>(G, *)</code>，非空集合G自然就是自函子构成的集合，而二元运算<code>*</code>是什么呢？幺元是什么呢？</p>
+<p>回忆Haskell中对Monad实例的要求是实现<code>return</code>函数和<code>&gt;&gt;=</code>函数，它们的定义如下：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="type">Monad</span> (<span class="title">m</span> :: * -&gt; *) <span class="keyword">where</span></span></span><br><span class="line">    (&gt;&gt;=) :: m a -&gt; (a -&gt; m b) -&gt; m b</span><br><span class="line">    return :: a -&gt; m a</span><br></pre></td></tr></table></figure>
+<p>根据函数声明可以看出，<code>return</code>本身就是一个特殊的自函子，而<code>&gt;&gt;=</code>酷似二元运算。我们自然地猜测<code>&gt;&gt;=</code>就是这个幺半群的二元运算，<code>reutrn</code>就是幺元。但是<code>&gt;&gt;=</code>并不完全符合二元运算的定义，所以我们定义新的函数：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;=&gt; :: (a -&gt; m b) -&gt; (b -&gt; m c) -&gt; (a -&gt; m c)</span><br></pre></td></tr></table></figure>
+<p>显然，<code>&gt;=&gt;</code>符合这个幺半群里对二元运算的定义。<code>&gt;&gt;=</code>与<code>&gt;=&gt;</code>的关系为对于任意两个函子<code>f, g</code>，有<code>(f x) &gt;&gt;= g</code>等价于<code>(f &gt;=&gt; g) x</code>。</p>
+<h4 id="封闭性"><a href="#封闭性" class="headerlink" title="封闭性"></a>封闭性</h4><p><del>对于任意两个自函子<code>f: a -&gt; m b</code>以及<code>g: b -&gt; m c</code>，那么<code>&gt;&gt;= g</code>就是一个<code>m b -&gt; m c</code>的自然变换，将<code>f</code>映射为<code>h: a -&gt; m c</code>，而显然<code>h</code>也是一个自函子，所以满足封闭性。用代码表示就是<code>(&gt;&gt;= g) . f = h</code>。</del></p>
+<p>对于任意两个自函子<code>f: a -&gt; m b</code>以及<code>g: b -&gt; m c</code>，那么<code>f &gt;=&gt; g</code>得到<code>h: a -&gt; m c</code>的自然变换，而显然<code>h</code>也是一个自函子，所以满足封闭性。</p>
+<h4 id="结合律"><a href="#结合律" class="headerlink" title="结合律"></a>结合律</h4><p><del>对于任意三个自函子<code>f: a -&gt; m b</code>, <code>g: b -&gt; m c</code>, <code>h: c -&gt; m d</code>，先考虑<code>(f * g) * h</code>的顺序，计算<code>(&gt;&gt;= h) . ((&gt;&gt;= g) . f) = a - &gt; m d</code>。再考虑<code>f * (g * h)</code>的顺序，计算<code>(&gt;&gt;= (&gt;&gt;= h) . g) . f = a - &gt; m d</code>。所以结合律成立。</del></p>
+<p>对于任意三个自函子<code>f: a -&gt; m b</code>, <code>g: b -&gt; m c</code>, <code>h: c -&gt; m d</code>，先考虑<code>(f * g) * h</code>的顺序，计算<code>(f &gt;=&gt; g) &gt;=&gt; h = a - &gt; m d</code>。再考虑<code>f * (g * h)</code>的顺序，计算<code>f &gt;=&gt; (g &gt;=&gt; h) = a - &gt; m d</code>。所以结合律成立。</p>
+<h4 id="幺元"><a href="#幺元" class="headerlink" title="幺元"></a>幺元</h4><p><del>首先验证左结合律。取任意自函子<code>f: a -&gt; m b</code>，考虑<code>return * f</code>，计算<code>(&gt;&gt; f) . return = a -&gt; m b = f</code>。左结合律成立。再验证右结合律，考虑<code>f * return</code>，计算<code>(&gt;&gt;= return) . f = a -&gt; m b = f</code>，右结合律成立。</del></p>
+<p>首先验证左结合律。取任意自函子<code>f: a -&gt; m b</code>，考虑<code>return * f</code>，计算<code>return &gt;=&gt; f = a -&gt; m b = f</code>。左结合律成立。再验证右结合律，考虑<code>f * return</code>，计算<code>f &gt;=&gt; return = a -&gt; m b = f</code>，右结合律成立。</p>
+<p>综上，我们验证了实现了<code>return</code>和<code>&gt;=&gt;</code>(也就是实现了<code>return</code>和<code>&gt;&gt;=</code>)的Monad实例确实是自函子范畴上的幺半群。这里我们暂时不再证明满足自函子范畴上的幺半群一定是Monad的结论。</p>
+<h2 id="Monad有什么用"><a href="#Monad有什么用" class="headerlink" title="Monad有什么用"></a>Monad有什么用</h2><p>费尽千辛万苦终于理解了开头一句话的意思，但现在面临的问题是引入Monad究竟给Haskell带来了什么好处呢？无非是解决非纯函数带来的副作用的问题。</p>
+<p>那么Monad怎么解决副作用问题呢？</p>
+<p>在维基百科的Haskell词条中有如下描述：</p>
+<blockquote>
+<p>它是一门纯函数编程语言，这意味着大体上，Haskell中的函数没有副作用。Haskell用特定的类型来表达副作用，该类型与函数类型相互独立。纯函数可以操作并返回可执行的副作用的类型，但不能够执行它们，只有用于表达副作用的类型才能执行这些副作用，Haskell以此表达其它语言中的非纯函数。</p>
+</blockquote>
+<p>按照我的理解，Haskell对于这些可能有副作用的类型构造了相应的高级类型<code>Higher Order Type</code>，也就是形成了对立于没有副作用的范畴的新范畴。而在这两个范畴之间，通过Monad联系起来。若记无副作用范畴为C1，有副作用范畴为C2。这种联系只有从C1到C2的单向方法以及C2的内部方法，不存在从C2到C1的方法。通过这样的设计来隔离这两个范畴。</p>
+<p>还是最初以导致Monad引入的IO类型作为例子说明。</p>
+<p>这里的自函子为<code>IO</code>函子，它对Monad类型类的实现如下：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">instance</span> <span class="type">Monad</span> <span class="type">IO</span> <span class="keyword">where</span></span></span><br><span class="line">    return x = <span class="type">IO</span> x</span><br><span class="line">    <span class="type">IO</span> x &gt;&gt;= f = f x</span><br></pre></td></tr></table></figure>
+<p>IO是显然的具有副作用的操作。IO类型将这种操作封装为一种类型，<code>return</code>操作提供了从C1到C2的方法，<code>&gt;&gt;=</code>操作提供了C2的内部方法。更准确的说法是道可叨中的说法：<code>return</code>是一种最自然的类型提升，也就是单位函子，<code>&gt;&gt;=</code>是一种首先的类型下降，但是确保了结果还是在IO类型的范畴当中。</p>
+<p>通过Monad的机制，确保了有副作用的范畴中的执行始终停留在有副作用的范畴中，不会影响原来的类型。</p>
+<p>最后我想补充一点，Monad是如何解决执行顺序对于有副作用函数的影响。我的理解是<code>&gt;&gt;=</code>实际上类似于shell中的<code>|</code>，它构造了一种管道，使得函数的执行是有顺序的。但是这与幺半群的结合律是否矛盾呢？并不矛盾。因为例如对于<code>m &gt;&gt;= f &gt;&gt;= g ...</code>中除了第一个参数，后续的部分只是明确了执行的过程，并没有实际的输入执行，必须等到<code>m</code>进入管道后才能真正开始计算结果。所以与结合律并不矛盾。</p>
+<p>引用道可叨的一张图，希望能帮助理解。</p>
+<p><img src="/BlogImages/Monad初探/Monad_2.png" alt=""></p>
+<!--> 原本我觉得上面这一段中提出执行顺序问题，是可以在前面关于隔离两个范畴的讨论中解决掉的，但是并没能太想清楚-->
+<h2 id="程序示例"><a href="#程序示例" class="headerlink" title="程序示例"></a>程序示例</h2><p>有道寒假实践题目是调查自己的家族图谱。如果我们构想了一个数据结构存储了所有收集到的关于一个族谱的信息。从其中某一个人出发，要获得与他相关的任意一个人，可以经过一步或者多步如下的关系获得：父亲(father)，母亲(mother)，丈夫或妻子(husbandOrWife)，长子或长女(eldestChild)，最大的弟弟或妹妹(nextChild)</p>
+<p>于是我构造了如下的例子：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">data</span> <span class="type">Person</span> = <span class="type">Person</span> <span class="type">String</span></span></span><br><span class="line">              <span class="keyword">deriving</span> <span class="type">Show</span></span><br><span class="line"><span class="title">father</span> :: <span class="type">Person</span> -&gt; <span class="type">Maybe</span> <span class="type">Person</span></span><br><span class="line"><span class="title">mother</span> :: <span class="type">Person</span> -&gt; <span class="type">Maybe</span> <span class="type">Person</span></span><br><span class="line"><span class="title">husbandOrWife</span> :: <span class="type">Person</span> -&gt; <span class="type">Maybe</span> <span class="type">Person</span></span><br><span class="line"><span class="title">eldestChild</span> :: <span class="type">Person</span> -&gt; <span class="type">Maybe</span> <span class="type">Person</span></span><br><span class="line"><span class="title">nextChild</span> :: <span class="type">Person</span> -&gt; <span class="type">Maybe</span> <span class="type">Person</span></span><br></pre></td></tr></table></figure>
+<p>这里我们用了Monad类型的<code>Maybe</code>。它给我们带来了什么好处呢？由于不是每一个人都拥有上述五种关系的人，或者由于族谱的缺失，数据不一定完整。所以有可能经过上述某一步操作，没有期望的结果。如果我们采用对函数结果进行判断，则代码会演变成类似<code>If...else...</code>结构冗长的嵌套。<code>Maybe</code>由于实现了Monad类型，通过<code>&gt;&gt;=</code>我们可以正常地寻找某人，中间过程不用加以判断，如果某一步出现找不到，则结果会变为<code>Nothing</code>(不是说他不是东西。。。)。简直太有爱了！</p>
+<p>从范畴角度来看，由于<code>Maybe</code>类型存在例外的<code>Nothing</code>的情况，所以Monad使得涉及<code>Maybe</code>的操作被限制在<code>Maybe</code>对应的范畴内，从而使程序设计变得容易。</p>
+<p>写了这么多，我只想说。。。心好累。。。</p>
+<p><br><br><br><br><br><br><br></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li>我所理解的monad系列0-5 <a href="http://hongjiang.info/understand-monad-0/" target="_blank" rel="noopener">链接</a></li>
+<li>道可叨 <a href="http://zhuoqiang.me/what-is-monad.html" target="_blank" rel="noopener">链接</a></li>
+<li>自然变换 - 维基百科 <a href="http://zh.wikipedia.org/wiki/自然變換" target="_blank" rel="noopener">链接</a></li>
+<li>知乎问题 - 如何解释Haskell中的单子？parker liu的回答 <a href="http://www.zhihu.com/question/22291305" target="_blank" rel="noopener">链接</a></li>
+<li>Haskell/Understanding Monad <a href="http://en.wikibooks.org/wiki/Haskell/Understanding_monads#Monad_Laws" target="_blank" rel="noopener">链接</a></li>
+</ol>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2015/02/18/03.Mac | Mac小工具集锦v1-0/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2014/10/29/01.Python | Python入门篇/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="Ricardo Liu's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        youremail@email.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2018/01/">一月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/03/">三月 2015<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/02/">二月 2015<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/12/">十二月 2014<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/10/">十月 2014<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+
+    <!-- Pages  -->
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            主题 - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-twitter">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-facebook">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-gplus">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+    
+    <!-- V2EX -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>Neverland
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?V/53wGualMuiPM3xoetD5Q==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.2 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
