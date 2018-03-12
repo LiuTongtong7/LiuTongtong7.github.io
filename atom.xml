@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sevenspace.siyuan12.com/"/>
-  <updated>2018-03-11T16:26:10.000Z</updated>
+  <updated>2018-03-12T05:52:36.000Z</updated>
   <id>http://sevenspace.siyuan12.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>virtualenv | 更新Python后如何修复virtualenv</title>
+    <link href="http://sevenspace.siyuan12.com/2018/03/12/09.virtualenv%20%7C%20%E6%9B%B4%E6%96%B0Python%E5%90%8E%E5%A6%82%E4%BD%95%E6%9B%B4%E6%96%B0virtualenv/"/>
+    <id>http://sevenspace.siyuan12.com/2018/03/12/09.virtualenv | 更新Python后如何更新virtualenv/</id>
+    <published>2018-03-12T03:45:38.000Z</published>
+    <updated>2018-03-12T05:52:36.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;摘要&lt;/strong&gt;：在升级了Python后，由于Python路径变更，virtualenv中的symlinks将被破坏，本文提供了脚本来修复这个问题。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Python" scheme="http://sevenspace.siyuan12.com/categories/Python/"/>
+    
+    
+      <category term="Python" scheme="http://sevenspace.siyuan12.com/tags/Python/"/>
+    
+      <category term="virtualenv" scheme="http://sevenspace.siyuan12.com/tags/virtualenv/"/>
+    
+  </entry>
   
   <entry>
     <title>撒币游戏 | 一次有趣的博弈论实践</title>
