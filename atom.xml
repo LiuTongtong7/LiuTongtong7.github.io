@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sevenspace.siyuan12.com/"/>
-  <updated>2018-03-12T05:52:36.000Z</updated>
+  <updated>2018-03-15T03:44:04.000Z</updated>
   <id>http://sevenspace.siyuan12.com/</id>
   
   <author>
@@ -17,17 +17,15 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>virtualenv | 更新Python后如何修复virtualenv</title>
-    <link href="http://sevenspace.siyuan12.com/2018/03/12/09.virtualenv%20%7C%20%E6%9B%B4%E6%96%B0Python%E5%90%8E%E5%A6%82%E4%BD%95%E6%9B%B4%E6%96%B0virtualenv/"/>
-    <id>http://sevenspace.siyuan12.com/2018/03/12/09.virtualenv | 更新Python后如何更新virtualenv/</id>
+    <title>Python | 更新Python后如何修复virtualenv</title>
+    <link href="http://sevenspace.siyuan12.com/2018/03/12/09.Python%20%7C%20%E6%9B%B4%E6%96%B0Python%E5%90%8E%E5%A6%82%E4%BD%95%E6%9B%B4%E6%96%B0virtualenv/"/>
+    <id>http://sevenspace.siyuan12.com/2018/03/12/09.Python | 更新Python后如何更新virtualenv/</id>
     <published>2018-03-12T03:45:38.000Z</published>
-    <updated>2018-03-12T05:52:36.000Z</updated>
+    <updated>2018-03-15T03:44:04.000Z</updated>
     
     <summary type="html">
     
-      &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;摘要&lt;/strong&gt;：在升级了Python后，由于Python路径变更，virtualenv中的symlinks将被破坏，本文提供了脚本来修复这个问题。&lt;/p&gt;
-&lt;/blockquote&gt;
+      在升级了Python后，由于Python路径变更，virtualenv中的symlinks将被破坏，本文提供了脚本来修复这个问题。
     
     </summary>
     
@@ -83,15 +81,41 @@
   </entry>
   
   <entry>
-    <title>Mac | Mac各种折腾v1.0</title>
-    <link href="http://sevenspace.siyuan12.com/2015/03/31/05.Mac%20%7C%20Mac%E5%90%84%E7%A7%8D%E6%8A%98%E8%85%BEv1-0/"/>
-    <id>http://sevenspace.siyuan12.com/2015/03/31/05.Mac | Mac各种折腾v1-0/</id>
-    <published>2015-03-31T02:03:33.000Z</published>
-    <updated>2018-03-11T15:53:29.000Z</updated>
+    <title>密码学 | Vernam密码破解实战</title>
+    <link href="http://sevenspace.siyuan12.com/2018/01/15/08.%E5%AF%86%E7%A0%81%E5%AD%A6%20%7C%20Vernam%E5%AF%86%E7%A0%81%E7%A0%B4%E8%A7%A3%E5%AE%9E%E6%88%98/"/>
+    <id>http://sevenspace.siyuan12.com/2018/01/15/08.密码学 | Vernam密码破解实战/</id>
+    <published>2018-01-14T18:03:18.000Z</published>
+    <updated>2018-03-15T04:28:18.000Z</updated>
     
     <summary type="html">
     
-      记录了使用Mac三年以来，各种搜索得到&amp;搜索不到的问题&amp;方法。
+      &lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;摘要&lt;/strong&gt;：从理论上可知，Vernam密码的一次一密(One-Time-Pad)方案是不可破解的。但是，如果同一段密钥被用来加密多段密文，即多次一密(Many-Time-Pad)的情况下，加密方案就不再是安全的。本文以一次密码学课的作业为例，介绍Many-Time-Pad Attack的具体过程。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="密码学" scheme="http://sevenspace.siyuan12.com/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
+    
+    
+      <category term="密码学" scheme="http://sevenspace.siyuan12.com/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
+    
+      <category term="Vernam" scheme="http://sevenspace.siyuan12.com/tags/Vernam/"/>
+    
+      <category term="One-Time-Pad" scheme="http://sevenspace.siyuan12.com/tags/One-Time-Pad/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mac | Mac不常见问题及解决方案</title>
+    <link href="http://sevenspace.siyuan12.com/2015/03/31/05.Mac%20%7C%20Mac%E4%B8%8D%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    <id>http://sevenspace.siyuan12.com/2015/03/31/05.Mac | Mac不常见问题及解决方案/</id>
+    <published>2015-03-31T02:03:33.000Z</published>
+    <updated>2018-03-15T03:43:33.000Z</updated>
+    
+    <summary type="html">
+    
+      记录了使用Mac三年以来，各种搜索得到&amp;搜索不到的问题&amp;解决方案。
     
     </summary>
     
@@ -118,9 +142,9 @@
       <category term="密码学" scheme="http://sevenspace.siyuan12.com/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
     
     
-      <category term="密码学" scheme="http://sevenspace.siyuan12.com/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
-    
       <category term="Enigma" scheme="http://sevenspace.siyuan12.com/tags/Enigma/"/>
+    
+      <category term="密码学" scheme="http://sevenspace.siyuan12.com/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
     
   </entry>
   
