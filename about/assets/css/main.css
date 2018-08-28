@@ -1773,32 +1773,32 @@
 	}
 
 	input, select, textarea {
-		color: #9E3BC4;
+		color: #9035B2;
 	}
 
 	a {
-		color: #9E3BC4;
+		color: #9035B2;
 	}
 
 	strong, b {
-		color: #9E3BC4;
+		color: #9035B2;
 	}
 
 	h1, h2, h3, h4, h5, h6 {
-		color: #9E3BC4;
+		color: #9035B2;
 	}
 
 	blockquote {
-		border-left-color: #9E3BC4;
+		border-left-color: #9035B2;
 	}
 
 	code {
 		background: none;
-		border-color: #9E3BC4;
+		border-color: #9035B2;
 	}
 
 	hr {
-		border-bottom-color: #9E3BC4;
+		border-bottom-color: #9035B2;
 	}
 
 /* Box */
@@ -1823,7 +1823,7 @@
 		}
 
 	.box {
-		border-color: #9E3BC4;
+		border-color: #9035B2;
 	}
 
 /* Button */
@@ -1953,8 +1953,8 @@
 		button.alt,
 		.button.alt {
 			background-color: transparent;
-			box-shadow: inset 0 0 0 2px #9E3BC4;
-			color: #9E3BC4 !important;
+			box-shadow: inset 0 0 0 2px #9035B2;
+			color: #9035B2 !important;
 		}
 
 			input[type="submit"].alt:hover,
@@ -1986,7 +1986,7 @@
 		input[type="button"].special,
 		button.special,
 		.button.special {
-			background-color: #9E3BC4;
+			background-color: #9035B2;
 			color: #ffffff !important;
 		}
 
@@ -2228,7 +2228,7 @@
 	}
 
 	label {
-		color: #9E3BC4;
+		color: #9035B2;
 	}
 
 	input[type="text"],
@@ -2245,12 +2245,12 @@
 		input[type="email"]:focus,
 		select:focus,
 		textarea:focus {
-			border-color: #9E3BC4;
-			box-shadow: 0 0 0 1px #9E3BC4;
+			border-color: #9035B2;
+			box-shadow: 0 0 0 1px #9035B2;
 		}
 
 	.select-wrapper:before {
-		color: #9E3BC4;
+		color: #9035B2;
 	}
 
 	input[type="checkbox"] + label,
@@ -2261,20 +2261,20 @@
 		input[type="checkbox"] + label:before,
 		input[type="radio"] + label:before {
 			background: none;
-			border-color: #9E3BC4;
+			border-color: #9035B2;
 		}
 
 	input[type="checkbox"]:checked + label:before,
 	input[type="radio"]:checked + label:before {
-		background-color: #9E3BC4;
-		border-color: #9E3BC4;
+		background-color: #9035B2;
+		border-color: #9035B2;
 		color: #ffffff;
 	}
 
 	input[type="checkbox"]:focus + label:before,
 	input[type="radio"]:focus + label:before {
-		border-color: #9E3BC4;
-		box-shadow: 0 0 0 1px #9E3BC4;
+		border-color: #9035B2;
+		box-shadow: 0 0 0 1px #9035B2;
 	}
 
 	::-webkit-input-placeholder {
@@ -2510,7 +2510,7 @@
 		}
 
 	ul.alt li {
-		border-top-color: #9E3BC4;
+		border-top-color: #9035B2;
 	}
 
 /* Section/Article */
@@ -2624,7 +2624,7 @@
 			}
 
 	table tbody tr {
-		border-color: #9E3BC4;
+		border-color: #9035B2;
 	}
 
 		table tbody tr:nth-child(2n + 1) {
@@ -2632,19 +2632,19 @@
 		}
 
 	table th {
-		color: #9E3BC4;
+		color: #9035B2;
 	}
 
 	table thead {
-		border-bottom-color: #9E3BC4;
+		border-bottom-color: #9035B2;
 	}
 
 	table tfoot {
-		border-top-color: #9E3BC4;
+		border-top-color: #9035B2;
 	}
 
 	table.alt tbody tr td {
-		border-color: #9E3BC4;
+		border-color: #9035B2;
 	}
 
 /* Wrapper */
@@ -2659,7 +2659,7 @@
 		}
 
 		.wrapper.style1 {
-			background-color: #9E3BC4;
+			background-color: #9035B2;
 			color: #f2a3a5;
 		}
 
@@ -2761,7 +2761,7 @@
 				.wrapper.style1 button.special,
 				.wrapper.style1 .button.special {
 					background-color: #ffffff;
-					color: #9E3BC4 !important;
+					color: #9035B2 !important;
 				}
 
 			.wrapper.style1 label {
@@ -2805,7 +2805,7 @@
 			.wrapper.style1 input[type="radio"]:checked + label:before {
 				background-color: #ffffff;
 				border-color: #ffffff;
-				color: #9E3BC4;
+				color: #9035B2;
 			}
 
 			.wrapper.style1 input[type="checkbox"]:focus + label:before,
@@ -2876,7 +2876,7 @@
 			}
 
 			.wrapper.style2 a {
-				color: #9E3BC4;
+				color: #9035B2;
 			}
 
 			.wrapper.style2 strong, .wrapper.style2 b {
@@ -2948,7 +2948,7 @@
 				.wrapper.style2 input[type="button"].special,
 				.wrapper.style2 button.special,
 				.wrapper.style2 .button.special {
-					background-color: #9E3BC4;
+					background-color: #9035B2;
 					color: #ffffff !important;
 				}
 
@@ -2986,8 +2986,8 @@
 				.wrapper.style2 input[type="email"]:focus,
 				.wrapper.style2 select:focus,
 				.wrapper.style2 textarea:focus {
-					border-color: #9E3BC4;
-					box-shadow: 0 0 0 1px #9E3BC4;
+					border-color: #9035B2;
+					box-shadow: 0 0 0 1px #9035B2;
 				}
 
 			.wrapper.style2 .select-wrapper:before {
@@ -3007,15 +3007,15 @@
 
 			.wrapper.style2 input[type="checkbox"]:checked + label:before,
 			.wrapper.style2 input[type="radio"]:checked + label:before {
-				background-color: #9E3BC4;
-				border-color: #9E3BC4;
+				background-color: #9035B2;
+				border-color: #9035B2;
 				color: #ffffff;
 			}
 
 			.wrapper.style2 input[type="checkbox"]:focus + label:before,
 			.wrapper.style2 input[type="radio"]:focus + label:before {
-				border-color: #9E3BC4;
-				box-shadow: 0 0 0 1px #9E3BC4;
+				border-color: #9035B2;
+				box-shadow: 0 0 0 1px #9035B2;
 			}
 
 			.wrapper.style2 ::-webkit-input-placeholder {
@@ -3095,7 +3095,7 @@
 
 	#header {
 		background: #ffffff;
-		color: #9E3BC4;
+		color: #9035B2;
 		cursor: default;
 		height: 4em;
 		left: 0;
@@ -3105,7 +3105,7 @@
 		top: 0;
 		width: 100%;
 		z-index: 10001;
-		border-bottom: solid 2px #9E3BC4;
+		border-bottom: solid 2px #9035B2;
 	}
 
 		#header .inner {
@@ -3134,7 +3134,7 @@
 			padding: 0;
 			position: absolute;
 			top: 0;
-			color: #9E3BC4;
+			color: #9035B2;
 			font-size: 1.75em;
 			text-transform: none;
 			font-weight: normal;
@@ -3158,7 +3158,7 @@
 			transition: color 0.2s ease-in-out;
 			display: inline-block;
 			padding: 0 1em;
-			color: #9E3BC4;
+			color: #9035B2;
 			text-decoration: none;
 			text-transform: uppercase;
 			font-weight: 700;
@@ -3168,7 +3168,7 @@
 			#header nav a:hover {
 				/*color: rgba(101, 64, 207, 0.75);*/
 				color: #fff;
-				background: #9E3BC4;
+				background: #9035B2;
 			}
 
 			#header nav a:last-child {
@@ -3252,7 +3252,7 @@
 		}
 
 		.navPanelToggle *:before {
-			color: #9E3BC4;
+			color: #9035B2;
 			display: block;
 			font-size: 16px;
 			height: 2.25em;
@@ -3280,7 +3280,7 @@
 		right: 0;
 		top: 0;
 		background: #ffffff;
-		color: #9E3BC4;
+		color: #9035B2;
 		height: 100%;
 		max-width: 80%;
 		width: 20em;
@@ -3302,7 +3302,7 @@
 
 		#navPanel a:not(.close) {
 			border-top: solid 1px rgba(101, 64, 207, 0.4);
-			color: #9E3BC4;
+			color: #9035B2;
 			font-weight: 700;
 			display: block;
 			padding: 0.75em 0;
@@ -3473,7 +3473,7 @@
 			#banner button.special,
 			#banner .button.special {
 				background-color: #ffffff;
-				color: #9E3BC4 !important;
+				color: #9035B2 !important;
 			}
 
 		#banner:after {
@@ -3754,7 +3754,7 @@
 /* Footer */
 
 	#footer {
-		background-color: #9E3BC4;
+		background-color: #9035B2;
 		color: #ffffff;
 		padding: 2em 0;
 	}
