@@ -5,16 +5,18 @@
     <!--
         © Material Theme
         https://github.com/viosey/hexo-theme-material
-        Version: 1.5.2 -->
+        Version: 1.5.6 -->
     <script>
-        window.materialVersion = "1.5.2"
+        window.materialVersion = "1.5.6"
         // Delete localstorage with these tags
         window.oldVersion = [
             'codestartv1',
             '1.3.4',
             '1.4.0',
             '1.4.0b1',
-            '1.5.0'
+            '1.5.0',
+            '1.5.2',
+            '1.5.5'
         ]
     </script>
 
@@ -25,10 +27,17 @@
 
 
 
+    <link rel="dns-prefetch" href="https://sevenspace-liutt.disqus.com"/>
 
 
 
+    <link rel="dns-prefetch" href="https://hm.baidu.com"/>
 
+    <link rel="dns-prefetch" href="https://www.google-analytics.com"/>
+
+
+
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
 
 
 
@@ -43,7 +52,7 @@
     
     <title>
         
-            密码学 | Vernam密码破解实战 | 
+            密码学 | Many-Time-Pad攻击 | 
         
         Ricardo Liu&#39;s Blog
     </title>
@@ -53,10 +62,8 @@
     <link rel="icon" href="/img/myfavicon.png">
 
     <meta name="format-detection" content="telephone=no"/>
-    <meta name="description" itemprop="description" content="
-摘要：从理论上可知，Vernam密码的一次一密(One-Time-Pad)方案是不可破解的。但是，如果同一段密钥被用来加密多段密文，即多次一密(Many-Time-Pad)的情况下，加密方案就不再是安全的。本文以一次密码学课的作业为例，介绍Many-Time-Pad Attack的具体过程。
-">
-    <meta name="keywords" content="编程, 摄影, 一切有趣的事情, Coding, Photography, Anything Interesting,密码学,Vernam,One-Time-Pad">
+    <meta name="description" itemprop="description" content="从理论上可知，Vernam密码的一次一密(One-Time-Pad)方案是不可破解的。但是，如果同一段密钥被用来加密多段密文，即多次一密(Many-Time-Pad)的情况下，加密方案就不再安全。本文以一次密码学课的作业为例，介绍Many-Time-Pad Attack的具体过程。">
+    <meta name="keywords" content="编程, 摄影, 一切有趣的事情, Coding, Photography, Anything Interesting,密码学,Vernam">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -80,7 +87,7 @@
     <!-- Import CSS -->
     
         <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?NKhlKQkXw/c66TR5p4wO+w==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
         
             
@@ -222,7 +229,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Ricardo Liu&#39;s Blog">
-    <meta name="msapplication-starturl" content="http://tongtonglii.siyuan12.com/2018/01/15/08.密码学 | Vernam密码破解实战/">
+    <meta name="msapplication-starturl" content="http://tongtonglii.siyuan12.com/2018/10/24/08.密码学 | Many-Time-Pad攻击/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Ricardo Liu&#39;s Blog">
@@ -241,18 +248,16 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="http://tongtonglii.siyuan12.com/2018/01/15/08.密码学 | Vernam密码破解实战/">
+    <meta property="og:url" content="http://tongtonglii.siyuan12.com/2018/10/24/08.密码学 | Many-Time-Pad攻击/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="密码学 | Vernam密码破解实战 | Ricardo Liu&#39;s Blog">
+    <meta property="og:title" content="密码学 | Many-Time-Pad攻击 | Ricardo Liu&#39;s Blog">
     <meta property="og:image" content="/img/myfavicon.png">
-    <meta property="og:description" content="
-摘要：从理论上可知，Vernam密码的一次一密(One-Time-Pad)方案是不可破解的。但是，如果同一段密钥被用来加密多段密文，即多次一密(Many-Time-Pad)的情况下，加密方案就不再是安全的。本文以一次密码学课的作业为例，介绍Many-Time-Pad Attack的具体过程。
-">
-    <meta property="og:article:tag" content="密码学"> <meta property="og:article:tag" content="Vernam"> <meta property="og:article:tag" content="One-Time-Pad"> 
+    <meta property="og:description" content="从理论上可知，Vernam密码的一次一密(One-Time-Pad)方案是不可破解的。但是，如果同一段密钥被用来加密多段密文，即多次一密(Many-Time-Pad)的情况下，加密方案就不再安全。本文以一次密码学课的作业为例，介绍Many-Time-Pad Attack的具体过程。">
+    <meta property="og:article:tag" content="密码学"> <meta property="og:article:tag" content="Vernam"> 
 
     
-        <meta property="article:published_time" content="Mon Jan 15 2018 02:03:18 GMT+0800">
-        <meta property="article:modified_time" content="Thu Mar 15 2018 12:28:18 GMT+0800">
+        <meta property="article:published_time" content="Wed Oct 24 2018 22:42:48 GMT+0800">
+        <meta property="article:modified_time" content="Thu Oct 25 2018 01:12:31 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -260,7 +265,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://tongtonglii.siyuan12.com/2018/01/15/08.密码学 | Vernam密码破解实战/index.html" />
+        <link rel="canonical" href="http://tongtonglii.siyuan12.com/2018/10/24/08.密码学 | Many-Time-Pad攻击/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -272,10 +277,10 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "http://tongtonglii.siyuan12.com/2018/01/15/08.密码学 | Vernam密码破解实战/index.html",
-    "headline": "密码学 | Vernam密码破解实战",
-    "datePublished": "Mon Jan 15 2018 02:03:18 GMT+0800",
-    "dateModified": "Thu Mar 15 2018 12:28:18 GMT+0800",
+    "mainEntityOfPage": "http://tongtonglii.siyuan12.com/2018/10/24/08.密码学 | Many-Time-Pad攻击/index.html",
+    "headline": "密码学 | Many-Time-Pad攻击",
+    "datePublished": "Wed Oct 24 2018 22:42:48 GMT+0800",
+    "dateModified": "Thu Oct 25 2018 01:12:31 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Ricardo Liu",
@@ -293,10 +298,8 @@
             "url": "/img/myfavicon.png"
         }
     },
-    "keywords": ",密码学,Vernam,One-Time-Pad编程, 摄影, 一切有趣的事情, Coding, Photography, Anything Interesting",
-    "description": "
-摘要：从理论上可知，Vernam密码的一次一密(One-Time-Pad)方案是不可破解的。但是，如果同一段密钥被用来加密多段密文，即多次一密(Many-Time-Pad)的情况下，加密方案就不再是安全的。本文以一次密码学课的作业为例，介绍Many-Time-Pad Attack的具体过程。
-",
+    "keywords": ",密码学,Vernam编程, 摄影, 一切有趣的事情, Coding, Photography, Anything Interesting",
+    "description": "从理论上可知，Vernam密码的一次一密(One-Time-Pad)方案是不可破解的。但是，如果同一段密钥被用来加密多段密文，即多次一密(Many-Time-Pad)的情况下，加密方案就不再安全。本文以一次密码学课的作业为例，介绍Many-Time-Pad Attack的具体过程。",
 }
 </script>
 
@@ -345,7 +348,7 @@
                     
                         <!-- Hamburger Button -->
                         <button class="MD-burger-icon sidebar-toggle">
-                            <span class="MD-burger-layer"></span>
+                            <span id="MD-burger-id" class="MD-burger-layer"></span>
                         </button>
                     
 
@@ -378,7 +381,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#01-问题背景"><span class="post-toc-number">1.</span> <span class="post-toc-text">01. 问题背景</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#02-问题内容"><span class="post-toc-number">2.</span> <span class="post-toc-text">02. 问题内容</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#03-相关资料"><span class="post-toc-number">3.</span> <span class="post-toc-text">03. 相关资料</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#04-分析过程"><span class="post-toc-number">4.</span> <span class="post-toc-text">04. 分析过程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#05-代码"><span class="post-toc-number">5.</span> <span class="post-toc-text">05. 代码</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#01-问题背景"><span class="post-toc-number">1.</span> <span class="post-toc-text">01. 问题背景</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#02-破解内容"><span class="post-toc-number">2.</span> <span class="post-toc-text">02. 破解内容</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#03-分析过程"><span class="post-toc-number">3.</span> <span class="post-toc-text">03. 分析过程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#密文配对"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">密文配对</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#密文破解"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">密文破解</span></a></li></ol></li></ol>
     </ul>
     
 
@@ -410,7 +413,7 @@
         
     
             <p class="article-headline-p">
-                密码学 | Vernam密码破解实战
+                密码学 | Many-Time-Pad攻击
             </p>
         </div>
 
@@ -429,7 +432,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>Ricardo Liu</strong>
-        <span>1月 15, 2018</span>
+        <span>10月 24, 2018</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -451,7 +454,7 @@
 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
     <li class="mdl-menu__item">在其它设备中阅读本文章</li>
     
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAAEOCAAAAABd2qZ5AAADjklEQVR42u3aS27cMBAFwLn/pZOtASPSe01SlpHSytDMiGRp0e7P54/ry/VBgAMHDhw4cODAgQPHizk+8fX1+99/+/2Z189PVs/3OTsLDhw4cOA4x3ETikYc+f18xWQ/+ZNx4MCBA8dpjiS4Xt9pQ2+UYl1+M3lVN2fBgQMHDhw/ypGnRu1hVtI/HDhw4MDxezmuD5ncn5UC//VMHDhw4MDxZo5ZOLz+VX6YfN38qMdrpThw4MCB48BAw9v+/uH5Dhw4cOD47znaq026VsqI7esZnggHDhw4cGzlSBo5bbrVYs048jGLmxeJAwcOHDge4UgCah4m22B8HeDbHd68SBw4cODAsZUjL7fN7swOWYTJMgBHxUEcOHDgwLGJox1cWGlWnRiVy4ubOHDgwIHjHMdn4crhZoMI6wQH5ztw4MCBA0dcHMwPkzeN2vGFlT0ku8KBAwcOHKc52hLeSitoZRwhCe1JSREHDhw4cJzmmB1+vSG0MlqR7/kmzcOBAwcOHFs5ZkMJK4Nxpz9tU0QcOHDgwLGXY7ZYPgwxazUVhykHGrb934EDBw4cOIJAmydgs0DYJoFteyyhx4EDBw4cz3Akm1gZL1gZudvV9IoGGnDgwIEDxyaOtjiYw7VJ14w1SRFx4MCBA8czHLMFkpQpH1ZInp+vUiecOHDgwIHjcY58W7OkbgbaFhaj4iAOHDhw4DjA0SZas5GCWSK3KxXEgQMHDhznONoWUU6WH299hC6nx4EDBw4cpzlW0rNZOjcbkmhHH4oEDwcOHDhwbOWYpVvJ+ML1d5JPTwze4cCBAweOZzjyhG3WEGqDax5oZ8khDhw4cOB4nmNX6pUPT5xGjAYacODAgQPHAY58iCHnyxtLbbDMfztM4XDgwIEDR8nRlvnao+atqXwYIg/wET0OHDhw4NjKMWsI5UlgC52j56MMNzvHgQMHDhwHOOpWTbxwXgpsn79y4cCBAweO0xzrY3O7ioZJaheFz/g+Dhw4cODYy9EGp/z+9XfyNLLdW42LAwcOHDgOcOTBdSXQtuvOAn9eQMSBAwcOHKc52sPsCqt5qtbupG474cCBAweOxznybSUBsn1azp28VBw4cODA8TaONn1qRyjadfN/C3DgwIEDxzMcswJcUoZbSrGC1fM9bG474cCBAweOAwMNdWCLE8I8MOelRhw4cODAcZrDhQMHDhw4cODAgQMHjpddfwGgrdzeCUeWcQAAAABJRU5ErkJggg==">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAAEOCAAAAABd2qZ5AAADlklEQVR42u3aS3IiMRAFQO5/6ZmtI2YM71VJwCK1ckDTLWUvyvV5/LF+rAcCHDhw4MCBAwcOHDi+mOMRr3+v//nJfx4T/PbfO/x2t992uzkLDhw4cOC4x/EiFMUczxETsoQpuT45Cw4cOHDguM2RH+ZUEK2DYnC3+iw4cODAgeOjHDnNLKlL7n825OPAgQMHjs9ybJKrJJTO7okDBw4cOL6ToyioxQdLGkinnvuBWikOHDhw4Dg00PDNf39gvgMHDhw4cCxWHhqThGoWVtvg+uJEOHDgwIHjKEfSBErGC5KS3Kah1Y47JKfDgQMHDhw3OPKyXR4gW9w8DOeht3ipOHDgwIHjKMemOFgEswuHbJ/+6x5w4MCBA8c1jjxMzgJkPgyxH5U7MNCAAwcOHDgWHLNAlQfUUwd7Tj+7HgcOHDhwnOVIEqrNcEO79RZ6k3DiwIEDB44bHHlClT+sLc/l5cKo2BdfiQMHDhw4bnDMSnL5tuomUDxINwu0OHDgwIHjnRzJsTfBOPm23UnRXppNDuLAgQMHjqMcm3Cbb/051mzcIV84cODAgeMsx2bwelYuTEp+s8QsD/A4cODAgeP9HLNxh80neaupHQd/8cJw4MCBA8cFjry1kydXbbKX07TBFQcOHDhwvJNj087JC3OPcs2ePhuww4EDBw4cNzjasl3+ebvdBLotKRbFQRw4cODAcZRjlhQlyd7zp8zuk5cOXySZOHDgwIHjKMe+nLcv0rXtpRlrlMLhwIEDB441R1sorMcF1uW/difPXycOHDhw4LjN0bZqZuNozzc9K1C2o3vF/x04cODAgWPBMUvV9gF4FqpzOBw4cODA8Z0cSZDLW0ptU6pNDodjFjhw4MCB4xpHPoLQDr2137ZtrVmAx4EDBw4cNzjawYKkGDcrICb3zF/SgfkOHDhw4MAx4khSrxspX1vam6V8UcKJAwcOHDgucLSJVt5wOnX4/aDDqlaKAwcOHDhGOUseYpMAnIfJzZ1nrS8cOHDgwHGPow1OSVKUN4ra9tUsbL/YJw4cOHDguMCRB9d2W23RcDPokKeROHDgwIHjPRz7NGlWRmxfyewfhajthAMHDhw43s7RNof2rax7zTAcOHDgwPE9HAlQ/qu8+BgFzpIPBw4cOHDc45iNGiTFu3y4bZO8HQ60OHDgwIFjwbEZaNikbbPDDAcXcODAgQPHWzgsHDhw4MCBAwcOHDhwfNn6C8P1qjvwx6jZAAAAAElFTkSuQmCC">
     
 </ul>
 
@@ -465,7 +468,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/One-Time-Pad/">One-Time-Pad</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Vernam/">Vernam</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/密码学/">密码学</a>
+        <a class="post_tag-link" href="/tags/Vernam/">Vernam</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/密码学/">密码学</a>
     </ul>
     
 
@@ -482,7 +485,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=密码学 | Vernam密码破解实战&url=http://tongtonglii.siyuan12.com/2018/01/15/08.密码学 | Vernam密码破解实战/index.html&pic=http://tongtonglii.siyuan12.com/img/myfavicon.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=密码学 | Many-Time-Pad攻击&url=http://tongtonglii.siyuan12.com/2018/10/24/08.密码学 | Many-Time-Pad攻击/index.html&pic=http://tongtonglii.siyuan12.com/img/myfavicon.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -494,7 +497,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://tongtonglii.siyuan12.com/2018/01/15/08.密码学 | Vernam密码破解实战/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://tongtonglii.siyuan12.com/2018/10/24/08.密码学 | Many-Time-Pad攻击/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -503,7 +506,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://tongtonglii.siyuan12.com/2018/01/15/08.密码学 | Vernam密码破解实战/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://tongtonglii.siyuan12.com/2018/10/24/08.密码学 | Many-Time-Pad攻击/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -512,7 +515,7 @@
 
     <!-- Share LinkedIn -->
     
-        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://tongtonglii.siyuan12.com/2018/01/15/08.密码学 | Vernam密码破解实战/index.html&title=密码学 | Vernam密码破解实战" target="_blank">
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://tongtonglii.siyuan12.com/2018/10/24/08.密码学 | Many-Time-Pad攻击/index.html&title=密码学 | Many-Time-Pad攻击" target="_blank">
             <li class="mdl-menu__item">
                 分享到 LinkedIn
             </li>
@@ -535,13 +538,167 @@
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
         <blockquote>
-<p><strong>摘要</strong>：从理论上可知，Vernam密码的一次一密(One-Time-Pad)方案是不可破解的。但是，如果同一段密钥被用来加密多段密文，即多次一密(Many-Time-Pad)的情况下，加密方案就不再是安全的。本文以一次密码学课的作业为例，介绍Many-Time-Pad Attack的具体过程。</p>
+<p><strong>摘要</strong>：从理论上可知，Vernam密码的一次一密(One-Time-Pad)方案是不可破解的。但是，如果同一段密钥被用来加密多段密文，即多次一密(Many-Time-Pad)的情况下，加密方案就不再安全。本文以一次密码学课的作业为例，介绍Many-Time-Pad Attack的具体过程。</p>
 </blockquote>
 <a id="more"></a>
-<h2 id="01-问题背景"><a href="#01-问题背景" class="headerlink" title="01. 问题背景"></a>01. 问题背景</h2><p>Vernam加密法也称一次一密(One-Time-Pad)，使用与明文等长的随机密钥，对原文进行加密。由于密文与原文相比没有任何统计关系，所以一次一密的方案理论上是不可破解的。但是为了达到这样的效果，最重要的是，一旦明文改变，就不能再使用本次的密文。否则，多次一密(Many-Time-Pad)的场景下，这种加密方式就不再是安全的了。</p>
-<h2 id="02-问题内容"><a href="#02-问题内容" class="headerlink" title="02. 问题内容"></a>02. 问题内容</h2><p>现有6段使用Vernam加密过的字符串，但6段字符串总共使用了3个随机密钥，其中每个密钥都恰好使用了两次。6段明文分别是一段代码、一段莎士比亚的引言、一段歌词、三段其他的英语名言。请破解出所有明文。</p>
-<p>6段密文的下载地址：<a href=""></a></p>
-<h2 id="03-相关资料"><a href="#03-相关资料" class="headerlink" title="03. 相关资料"></a>03. 相关资料</h2><h2 id="04-分析过程"><a href="#04-分析过程" class="headerlink" title="04. 分析过程"></a>04. 分析过程</h2><h2 id="05-代码"><a href="#05-代码" class="headerlink" title="05. 代码"></a>05. 代码</h2>
+<h2 id="01-问题背景"><a href="#01-问题背景" class="headerlink" title="01. 问题背景"></a>01. 问题背景</h2><p>Vernam加密法也称一次一密(One-Time-Pad)，使用与明文等长的随机密钥，对原文进行加密。由于密文与原文没有任何统计关系，所以一次一密的方案理论上是不可破解的。但是为了达到这样的效果，最重要的条件是，一旦明文改变，就不能再使用本次的密文。否则，多次一密(Many-Time-Pad)的场景下，这种加密方式就不再安全。</p>
+<h2 id="02-破解内容"><a href="#02-破解内容" class="headerlink" title="02. 破解内容"></a>02. 破解内容</h2><p>现有6段使用Vernam加密过的字符串，但6段字符串总共使用了3个随机密钥，其中每个密钥都恰好使用了两次。6段明文分别是一段代码、一段莎士比亚的引言、一段歌词、三段其他的英语名言。需要破解出所有明文。</p>
+<p>6段密文的下载地址：<a href="https://github.com/LiuTongtong7/Snippets/tree/master/Vernam/ciphertexts" target="_blank" rel="noopener">Github链接</a></p>
+<h2 id="03-分析过程"><a href="#03-分析过程" class="headerlink" title="03. 分析过程"></a>03. 分析过程</h2><p>本题的解决过程应该分为两步：</p>
+<ol>
+<li>判断六段密文中，哪些密文是公用的统一密钥；</li>
+<li>将配对后的密文进行破解。</li>
+</ol>
+<h3 id="密文配对"><a href="#密文配对" class="headerlink" title="密文配对"></a>密文配对</h3><p>设两段明文为$p_1$和$p_2$，密钥为$c$，则加密后的密文分别为$p_1 \oplus c$和$p_2 \oplus c$。如果将两段密文再做一次异或，根据异或的性质，有$(p_1 \oplus c) \oplus (p_2 \oplus c) = p_1 \oplus p_2$，结果是两段明文直接异或的结果，与密钥无关。因此对于任意两段密文，如果它们共用了密钥，它们异或的结果就等价于它们对应的明文直接异或。</p>
+<p>一段英文文本中，绝大部分字符应该都是小写字母，其次是空格和大写字母，还有少数标点符号。因此两段英文文本做异或，大多数位置上都是小写字母之间做异或。遍历任意小写字母之间异或的结果，我们发现，小写字母之间异或的结果取值范围为<code>0x00-0x1F</code>。因此，两段明文之间异或的结果分布应该集中在<code>0x00-0x1F</code>之间（其次是<code>0x41-0x5A</code>，即空格与小写字母之间异或）。</p>
+<p>因此，我们可以将六段密文两两做异或，分析各位置上取值的分布，如果两段密文共用了密钥，取值应该主要分布在<code>0x00-0x1F</code>之间。而如果两段密文不共用密钥，取值的分布应该更为平均。密文之间异或结果在各区间的频数如下（按<code>0x00-0x1F</code>区间的频数降序）：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">密文对</th>
+<th style="text-align:center">0x00-0x1F</th>
+<th style="text-align:center">0x20-0x3F</th>
+<th style="text-align:center">0x40-0x5F</th>
+<th style="text-align:center">0x60-0x7F</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1 xor 3</td>
+<td style="text-align:center">82</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">40</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">2 xor 5</td>
+<td style="text-align:center">73</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">46</td>
+<td style="text-align:center">4</td>
+</tr>
+<tr>
+<td style="text-align:center">4 xor 6</td>
+<td style="text-align:center">63</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">59</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">4 xor 5</td>
+<td style="text-align:center">41</td>
+<td style="text-align:center">35</td>
+<td style="text-align:center">31</td>
+<td style="text-align:center">21</td>
+</tr>
+<tr>
+<td style="text-align:center">1 xor 6</td>
+<td style="text-align:center">40</td>
+<td style="text-align:center">27</td>
+<td style="text-align:center">31</td>
+<td style="text-align:center">30</td>
+</tr>
+<tr>
+<td style="text-align:center">2 xor 3</td>
+<td style="text-align:center">37</td>
+<td style="text-align:center">45</td>
+<td style="text-align:center">19</td>
+<td style="text-align:center">27</td>
+</tr>
+<tr>
+<td style="text-align:center">2 xor 6</td>
+<td style="text-align:center">36</td>
+<td style="text-align:center">34</td>
+<td style="text-align:center">35</td>
+<td style="text-align:center">23</td>
+</tr>
+<tr>
+<td style="text-align:center">5 xor 6</td>
+<td style="text-align:center">35</td>
+<td style="text-align:center">33</td>
+<td style="text-align:center">35</td>
+<td style="text-align:center">25</td>
+</tr>
+<tr>
+<td style="text-align:center">1 xor 4</td>
+<td style="text-align:center">35</td>
+<td style="text-align:center">32</td>
+<td style="text-align:center">36</td>
+<td style="text-align:center">25</td>
+</tr>
+<tr>
+<td style="text-align:center">3 xor 6</td>
+<td style="text-align:center">35</td>
+<td style="text-align:center">29</td>
+<td style="text-align:center">32</td>
+<td style="text-align:center">32</td>
+</tr>
+<tr>
+<td style="text-align:center">2 xor 4</td>
+<td style="text-align:center">34</td>
+<td style="text-align:center">36</td>
+<td style="text-align:center">39</td>
+<td style="text-align:center">19</td>
+</tr>
+<tr>
+<td style="text-align:center">3 xor 4</td>
+<td style="text-align:center">34</td>
+<td style="text-align:center">32</td>
+<td style="text-align:center">33</td>
+<td style="text-align:center">29</td>
+</tr>
+<tr>
+<td style="text-align:center">1 xor 5</td>
+<td style="text-align:center">26</td>
+<td style="text-align:center">43</td>
+<td style="text-align:center">21</td>
+<td style="text-align:center">38</td>
+</tr>
+<tr>
+<td style="text-align:center">1 xor 2</td>
+<td style="text-align:center">26</td>
+<td style="text-align:center">39</td>
+<td style="text-align:center">28</td>
+<td style="text-align:center">35</td>
+</tr>
+<tr>
+<td style="text-align:center">3 xor 5</td>
+<td style="text-align:center">23</td>
+<td style="text-align:center">43</td>
+<td style="text-align:center">24</td>
+<td style="text-align:center">38</td>
+</tr>
+</tbody>
+</table>
+<p>与我们的分析一致，密文1和3、2和5、4和6异或的分布集中在<code>0x00-0x1F</code>和<code>0x40-0x5F</code>之间，而其他配对异或结果的分布很平均。所以，我们可以断定，密文1和3、2和5、4和6分别共用了同一密钥。</p>
+<h3 id="密文破解"><a href="#密文破解" class="headerlink" title="密文破解"></a>密文破解</h3><p>在确定了哪些密文共用的是同一密钥之后，下一步就是逐对破解。</p>
+<blockquote>
+<p>破解时，我们最主要的依据是题干中的：“6段明文分别是一段代码、一段莎士比亚的引言、一段歌词、三段其他的英语名言。”这个条件大大缩小了语料库，同时也为我们提供了突破口。</p>
+</blockquote>
+<p>为了方便验证猜想，我制作了如下的前端工具。左右分别为一对密文，当在某个位置填入字符（猜想的明文）后，工具会自动在另一侧算出对应的明文。</p>
+<p><img src="/BlogImages/Many-Time-Pad攻击/前端工具.png" alt="前端工具"></p>
+<blockquote>
+<p>工具地址：<a href="https://github.com/LiuTongtong7/Snippets/tree/master/Vernam/www" target="_blank" rel="noopener">Github链接</a>。</p>
+<p>使用时将querystring设置为“?left=i&amp;right=j”，即可在左侧显示密文i，右侧显示密文j。</p>
+</blockquote>
+<p>由于空格与小写字母之间异或结果的取值范围为<code>0x41-0x5A</code>，我们可以通过这个范围去大致观察空格的分布。在密文2和5的结果中（如下），我们发现最后的18个位置几乎都是位于上述区间内，不禁猜想，难道某个明文尾部是用空格填充的？</p>
+<pre><code>&#39;05&#39;, &#39;49&#39;, &#39;1d&#39;, &#39;11&#39;, &#39;13&#39;, &#39;0b&#39;, &#39;52&#39;, &#39;0d&#39;, 
+&#39;54&#39;, &#39;21&#39;, &#39;0e&#39;, &#39;43&#39;, &#39;11&#39;, &#39;4f&#39;, &#39;18&#39;, &#39;59&#39;, 
+&#39;57&#39;, &#39;11&#39;, &#39;1b&#39;, &#39;04&#39;, &#39;49&#39;, &#39;18&#39;, &#39;1c&#39;, &#39;0e&#39;, 
+&#39;4b&#39;, &#39;40&#39;, &#39;4f&#39;, &#39;59&#39;, &#39;69&#39;, &#39;41&#39;, &#39;4f&#39;, &#39;1d&#39;, 
+&#39;09&#39;, &#39;1a&#39;, &#39;52&#39;, &#39;04&#39;, &#39;00&#39;, &#39;4b&#39;, &#39;45&#39;, &#39;29&#39;, 
+&#39;1f&#39;, &#39;54&#39;, &#39;59&#39;, &#39;1b&#39;, &#39;1a&#39;, &#39;00&#39;, &#39;00&#39;, &#39;00&#39;, 
+&#39;00&#39;, &#39;1b&#39;, &#39;00&#39;, &#39;17&#39;, &#39;00&#39;, &#39;00&#39;, &#39;1a&#39;, &#39;07&#39;, 
+&#39;11&#39;, &#39;00&#39;, &#39;17&#39;, &#39;00&#39;, &#39;4e&#39;, &#39;10&#39;, &#39;0c&#39;, &#39;18&#39;, 
+&#39;05&#39;, &#39;50&#39;, &#39;4e&#39;, &#39;04&#39;, &#39;48&#39;, &#39;06&#39;, &#39;0f&#39;, &#39;00&#39;, 
+&#39;18&#39;, &#39;00&#39;, &#39;45&#39;, &#39;43&#39;, &#39;07&#39;, &#39;48&#39;, &#39;54&#39;, &#39;2b&#39;, 
+&#39;09&#39;, &#39;16&#39;, &#39;53&#39;, &#39;06&#39;, &#39;13&#39;, &#39;4e&#39;, &#39;0d&#39;, &#39;4c&#39;, 
+&#39;29&#39;, &#39;04&#39;, &#39;06&#39;, &#39;4e&#39;, &#39;43&#39;, &#39;45&#39;, &#39;0d&#39;, &#39;36&#39;, 
+&#39;04&#39;, &#39;0b&#39;, &#39;16&#39;, &#39;02&#39;, &#39;11&#39;, &#39;52&#39;, &#39;65&#39;, &#39;00&#39;, 
+&#39;00&#39;, &#39;53&#39;, &#39;0d&#39;, &#39;0a&#39;, &#39;1c&#39;, &#39;1c&#39;, &#39;00&#39;, &#39;45&#39;, 
+&#39;41&#39;, &#39;52&#39;, &#39;00&#39;, &#39;0d&#39;, &#39;74&#39;, &#39;48&#39;, &#39;45&#39;, &#39;00&#39;, 
+&#39;62&#39;, &#39;45&#39;, &#39;41&#39;, &#39;54&#39;, &#39;4c&#39;, &#39;45&#39;, &#39;53&#39;, &#39;00&#39;
+</code></pre>
         
     
 
@@ -595,8 +752,8 @@
 
 <script type="text/javascript">
     var disqus_config = function () {
-        this.page.url = 'http://tongtonglii.siyuan12.com/2018/01/15/08.密码学 | Vernam密码破解实战/';  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = 'http://tongtonglii.siyuan12.com/2018/01/15/08.密码学 | Vernam密码破解实战/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = 'http://tongtonglii.siyuan12.com/2018/10/24/08.密码学 | Many-Time-Pad攻击/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://tongtonglii.siyuan12.com/2018/10/24/08.密码学 | Many-Time-Pad攻击/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 </script>
 
@@ -645,21 +802,13 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2018/01/15/07.Azure | 批量获取Azure-Blob列表/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2015/03/31/05.Mac | Mac不常见问题及解决方案/" id="post_nav-older" class="next-content">
+        <a href="/2018/03/12/09.Python | 更新Python后如何更新virtualenv/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
@@ -751,7 +900,7 @@
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/01/">一月 2018<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/03/">三月 2015<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/02/">二月 2015<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/12/">十二月 2014<span class="sidebar_archives-count">1</span></a>
+                <a class="sidebar_archives-link" href="/archives/2018/10/">十月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/01/">一月 2018<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/03/">三月 2015<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/02/">二月 2015<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2014/12/">十二月 2014<span class="sidebar_archives-count">1</span></a>
             </ul>
         </li>
         
@@ -946,15 +1095,18 @@ It will not impact the appearance and can give developers a lot of support :)
 
     <!-- Telegram -->
     
-    
+
     <!-- V2EX -->
+    
+
+    <!-- Segmentfault -->
     
 </div>
 
 
         <!--Copyright-->
         <div id="copyright">
-            Copyright&nbsp;©&nbsp;2014&nbsp;-<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>Ricardo Liu's Blog
+            Copyright&nbsp;©&nbsp;<span year></span>&nbsp;Ricardo Liu's Blog
             
                 <br>
                 
@@ -989,7 +1141,7 @@ It will not impact the appearance and can give developers a lot of support :)
 
 
 
-    <script>lsloader.load("js_js","/js/js.min.js?V/53wGualMuiPM3xoetD5Q==", true)</script>
+    <script>lsloader.load("js_js","/js/js.min.js?Bn9UzEm8RrBSxqyZB0zPjA==", true)</script>
 
 
 
@@ -1076,6 +1228,26 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- MathJax Load-->
 
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
 
 <!-- Bing Background -->
 
@@ -1101,6 +1273,16 @@ It will not impact the appearance and can give developers a lot of support :)
 
 
 <script>
+    var copyrightNow = new Date().getFullYear();
+    var textContent = document.querySelector('span[year]')
+
+    copyrightSince = 2014;
+    if (copyrightSince === copyrightNow||copyrightSince === 0000) {
+        textContent.textContent = copyrightNow
+    } else {
+        textContent.textContent = copyrightSince + ' - ' + copyrightNow
+    }
+
     (function(){
         var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
 
@@ -1109,7 +1291,7 @@ It will not impact the appearance and can give developers a lot of support :)
             lsloader.runInlineScript(item.id,item.id);
         }
     })()
-console.log('\n %c © Material Theme | Version: 1.5.2 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+console.log('\n %c © Material Theme | Version: 1.5.6 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
 </script>
 
                 </main>
