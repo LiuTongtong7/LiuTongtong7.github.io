@@ -257,7 +257,7 @@
 
     
         <meta property="article:published_time" content="Wed Oct 24 2018 22:42:48 GMT+0800">
-        <meta property="article:modified_time" content="Fri Oct 26 2018 17:31:41 GMT+0800">
+        <meta property="article:modified_time" content="Fri Oct 26 2018 17:32:38 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -280,7 +280,7 @@
     "mainEntityOfPage": "http://tongtonglii.siyuan12.com/2018/10/24/08.密码学 | Many-Time-Pad攻击/index.html",
     "headline": "密码学 | Many-Time-Pad攻击",
     "datePublished": "Wed Oct 24 2018 22:42:48 GMT+0800",
-    "dateModified": "Fri Oct 26 2018 17:31:41 GMT+0800",
+    "dateModified": "Fri Oct 26 2018 17:32:38 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Ricardo Liu",
@@ -547,9 +547,8 @@
 <h2 id="03-分析过程"><a href="#03-分析过程" class="headerlink" title="03. 分析过程"></a>03. 分析过程</h2><p>本题的解决过程应该分为两步：</p>
 <ol>
 <li>判断六段密文中，哪些密文是公用的统一密钥；</li>
-<li>将配对后的密文进行破解。</li>
+<li>将配对后的密文进行破解。<br><br></li>
 </ol>
-<p><br></p>
 <h3 id="密文配对"><a href="#密文配对" class="headerlink" title="密文配对"></a>密文配对</h3><p>设两段明文为$p_1$和$p_2$，密钥为$c$，则加密后的密文分别为$p_1 \oplus c$和$p_2 \oplus c$。如果将两段密文再做一次异或，根据异或的性质，有$(p_1 \oplus c) \oplus (p_2 \oplus c) = p_1 \oplus p_2$，结果是两段明文直接异或的结果，与密钥无关。因此对于任意两段密文，如果它们共用了密钥，它们异或的结果就等价于它们对应的明文直接异或。</p>
 <p>一段英文文本中，绝大部分字符应该都是小写字母，其次是空格和大写字母，还有少数标点符号。因此两段英文文本做异或，大多数位置上都是小写字母之间做异或。遍历任意小写字母之间异或的结果，我们发现，小写字母之间异或的结果取值范围为<code>0x00-0x1F</code>。因此，两段明文之间异或的结果分布应该集中在<code>0x00-0x1F</code>之间（其次是<code>0x41-0x5A</code>，即空格与小写字母之间异或）。</p>
 <p>因此，我们可以将六段密文两两做异或，分析各位置上取值的分布，如果两段密文共用了密钥，取值应该主要分布在<code>0x00-0x1F</code>之间。而如果两段密文不共用密钥，取值的分布应该更为平均。密文之间异或结果在各区间的频数如下（按<code>0x00-0x1F</code>区间的频数降序）：</p>
