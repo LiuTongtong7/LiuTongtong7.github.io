@@ -121,7 +121,7 @@ var enable_archive_click = function() {
     });
     $("#design-container").bind("click", function() {
         var redirect_url = function() {
-            window.location.href = "http://tongtongliu.siyuan12.com/Design/";
+            window.location.href = "https://github.com/LiuTongtong7/Design/";
         };
         index_disappear(redirect_url);
     });
